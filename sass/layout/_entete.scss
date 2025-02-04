@@ -1,39 +1,42 @@
 .burger{
-    display: none;
+    display : none;
     @media screen and (max-width:$point__rupture) {
-        display: block;
-        position: absolute;
+        display : block;
+        position : absolute;
         top: 10px;
-        right: 10px;
+        right : 10px;
         z-index: 99;
     }
 }
 .chk__burger{
-    display: none;
+    display : none;
 }
 .chk__burger:checked ~ .entete__nav{
     display: flex;
 }
+
 
 .entete{
     display: flex;
     justify-content: space-between;
     align-items: center;
 
+
     &__nav {
         display: flex;
         justify-content: flex-end;
-        position: static;
+        position : static;
+
         @media screen and (max-width:$point__rupture) {
-            display: none;
+            display : none;
             flex-direction: column;
-            height: 50vh;
+            height: 52vh;
             width: 100vw;
-            padding-bottom: 20px; 
-            gap: 30px 0;
-            position: absolute;
-            top: 0;
-            right: 0;
+            padding-bottom: 20px;
+            gap: 30px 0; 
+            position : absolute;
+            top:0;
+            right:0;
             background-color: #fff;
         }
         flex-direction: row; 

@@ -15,6 +15,23 @@ Text Domain: 4w4-eddy
 /* /////////////////////
 Les Variables
 //////////////////////// */
+/* /////////////////////
+Base
+//////////////////////// */
+a {
+  color: #5a5;
+  text-decoration: none;
+}
+a:hover {
+  color: rgba(0, 0, 0, 0.1);
+}
+a:visited {
+  color: rgba(0, 0, 0, 0.3);
+}
+a:focus {
+  color: rgba(0, 0, 0, 0.4);
+}
+
 /* /////////////////////////
 Les composants
 /////////////////////////// */
@@ -31,11 +48,10 @@ Les composants
 @media screen and (max-width: 700px) {
   .menu {
     flex-direction: column;
+    gap: 6px 0;
   }
 }
 .menu__a {
-  color: #333;
-  text-decoration: none;
   padding: 2px 5px;
 }
 
@@ -118,6 +134,27 @@ Layout
   background-image: url("images/maldives.jpg");
 }
 
+.burger {
+  display: none;
+}
+@media screen and (max-width: 700px) {
+  .burger {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 99;
+  }
+}
+
+.chk__burger {
+  display: none;
+}
+
+.chk__burger:checked ~ .entete__nav {
+  display: flex;
+}
+
 .entete {
   display: flex;
   justify-content: space-between;
@@ -125,6 +162,8 @@ Layout
 }
 .entete__nav {
   display: flex;
+  justify-content: flex-end;
+  position: static;
   flex-direction: row;
   align-items: center;
   gap: 0 40px;
@@ -132,6 +171,15 @@ Layout
 }
 @media screen and (max-width: 700px) {
   .entete__nav {
+    display: none;
     flex-direction: column;
+    height: 52vh;
+    width: 100vw;
+    padding-bottom: 20px;
+    gap: 30px 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #fff;
   }
 }/*# sourceMappingURL=style.css.map */
