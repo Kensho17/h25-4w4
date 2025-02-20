@@ -1,0 +1,13 @@
+a{
+    color : $couleur__lien;
+    text-decoration: none;
+    &:hover{
+        color : rgba(0,0,0,0.1);
+    }
+    &:visited{
+        color : rgba(0,0,0,0.3);
+    }
+    &:focus{
+        color : rgba(0,0,0,0.4);
+    }
+}
