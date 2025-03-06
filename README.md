@@ -1,6 +1,7 @@
-# Exercice 1
+# TP1
 ## Cours: 4W4-Conception d'interface et développement Web
 
-Créer une page d'accueil en utilisant le standard BEM et Sass pour reproduire le contenu de maquette.
-Auteur: Eddy Martin
-### Githyb-page: https://eddytuto.github.io/h25-4w4-gr1/
+Création d'une page site internet pour présenter différentes destinations de voyage populaire et exotiques.
+
+## Auteur: Weiqiang Chen
+## Github-page: https://gftnth00.mywhc.ca/4w4_30/
