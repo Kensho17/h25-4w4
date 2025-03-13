@@ -2,6 +2,10 @@
     padding: 10vh 5vw;
 }
 
+body{
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
 .populaire .global {
     display: flex;
     flex-wrap: wrap;
@@ -10,11 +14,11 @@
 
 .hero{
     min-height: 100vh;
-    background-image: url("images/maldives.jpg");
+    background-repeat: no-repeat;
 }
 
 .hero__titre{
-    text-shadow: 3px 3px 5px rgb(251, 255, 8);
+    text-shadow: 3px 3px rgb(251, 255, 8);
     font-size: clamp(2rem, 3vw, 5rem);
 }
 
@@ -25,6 +29,7 @@
     color: black; 
     font-size: 16px; 
     border-radius: 5px; 
+    margin: 25px 0px 25px;
     cursor: pointer; 
 }
 .hero__icone-app{

@@ -8,10 +8,10 @@ Le composant .carte
     padding: 20px;
     border-radius: 8px;
     flex: 1 1 220px;
-    
   
     &--grande {
       padding: 40px;
+      max-width: 350px;
     }
     &--petite{
       padding: 20px;
