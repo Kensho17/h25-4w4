@@ -4,4 +4,4 @@
 Création d'une page site internet pour présenter différentes destinations de voyage populaire et exotiques.
 
 ## Auteur: Weiqiang Chen
-## Github-page: http://localhost/h25-4w4/
+## Github-page: https://gftnth00.mywhc.ca/4w4_30/
