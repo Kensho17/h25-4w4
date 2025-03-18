@@ -6,7 +6,6 @@ gabarit permettant d'afficher une carte
 ?>
 <article class="carte carte--grande">
                      <figure class="carte__image">
-                        <img src="images/img1.jpg" alt="Image de voyage">
                     </figure>
                     <div class="carte__contenu">
                         <?php
