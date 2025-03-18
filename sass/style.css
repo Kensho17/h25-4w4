@@ -297,33 +297,54 @@ form {
   }
 }
 
-/*
-  --------------------------------- Layout du pied de page
-*/
-footer {
-  background-color: rgb(236, 136, 13);
-  color: #000;
+.burger {
+  display: none;
+}
+@media screen and (max-width: 700px) {
+  .burger {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 99;
+  }
 }
 
-.piedpage {
-  display: flex;
-  flex-direction: column;
+.chk__burger {
+  display: none;
 }
-.piedpage__s1 {
+
+.chk__burger:checked ~ .entete__nav {
   display: flex;
+}
+
+.entete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(44, 62, 80);
+}
+.entete__nav {
+  display: flex;
+  justify-content: flex-end;
+  position: static;
+  flex-direction: row;
+  align-items: center;
+  gap: 0 40px;
   flex-wrap: wrap;
-  gap: 3rem;
 }
-.piedpage__s1__externe {
-  flex: 0 0 20%;
-}
-.piedpage__s1__externe .menu {
-  display: flex;
-  flex-direction: column;
-}
-.piedpage__s1__adresse {
-  flex: 0 0 40%;
-}
-.piedpage__s1__description {
-  flex: 1 0 300px;
+@media screen and (max-width: 700px) {
+  .entete__nav {
+    display: none;
+    flex-direction: column;
+    height: 50vh;
+    width: 100vw;
+    gap: 30px 0;
+    padding-bottom: 20px;
+    gap: 30px 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+  }
 }/*# sourceMappingURL=style.css.map */
