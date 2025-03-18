@@ -35,6 +35,6 @@
             <button class="hero__bouton">
                 s'inscrire
             </button>
-            <p> Auteur: <?php echo $hero_auteur ?> </p>
+            <p class="hero__auteur"> Auteur: <?php echo $hero_auteur ?> </p>
         </div>
     </section>
