@@ -10,7 +10,7 @@
     <section class="hero">
         <div class="hero__contenu global">
             <h1 class="hero__titre">
-                Club de voyage
+                Club-Voyage
             </h1>
             <p class="hero__description">
                 Découvrez des destinations uniques et inoubliables avec Mondo Voyages. Nous vous offrons des authentique, des paysages à couper le souffle et des aventures sur mesure. Partez à la découverte du monde avec nous et créez des souvenirs impérissables.
