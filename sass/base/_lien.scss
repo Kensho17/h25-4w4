@@ -5,7 +5,7 @@ a{
         color : rgba(0,0,0,0.1);
     }
     &:visited{
-        color: rgba(0,0,0,0.3);
+        color: $couleur__lien;
     }
     &:focus{
         color: rgba(0,0,0,0.4);
