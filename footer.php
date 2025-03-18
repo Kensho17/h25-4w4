@@ -8,6 +8,7 @@
     <div class="piedpage global">
         <section class="piedpage__s1">
         <div class="piedpage__s1__externe">
+        <h2>Nos partenaires</h2>
                 <?php wp_nav_menu(array(
                     "menu" => "externe",
                     "container" => "nav",
@@ -15,17 +16,15 @@
                 )); ?>
             </div>
             <div class="piedpage__s1__adresse">
- 
+                <h2>Adresse et recherche</h2>
+                <p><?php echo $footer_adresse; ?></p>
+                <p><?php echo $footer_telephone; ?></p>
                 <div class="piedpage__s1__adresse__recherche">
-                    <h3>Adresse et recherche</h3>
-                    <p><?php echo $footer_adresse; ?></p>
-                    Tel: (514) 254-7131
-                    <p><?php echo $footer_telephone; ?></p>
                     <?php get_search_form();   ?>
                 </div>
             </div>
             <div class="piedpage__s1__description">
-                <h3>Mission du club</h3>
+                <h2>Mission du club</h2>
                 <?php echo $footer_mission; ?>
             </div>
         </section>
@@ -42,8 +41,6 @@
                     "container_class" => ""
                 )); ?>
         </section>
- 
- 
     </div>
 </footer>
 <?php wp_footer() ?>
