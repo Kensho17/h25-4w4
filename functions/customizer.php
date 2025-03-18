@@ -1,7 +1,7 @@
 <?php
 
 
-function theme_31w_customize_register($wp_customize) {
+function theme_30w_customize_register($wp_customize) {
     // Le code pour ajouter des sections, des réglages et des contrôles ira ici.
   $wp_customize->add_section('hero_section', array(
     'title' => __('Hero Section', 'theme_30w'),
@@ -9,7 +9,7 @@ function theme_31w_customize_register($wp_customize) {
   ));
   /**Titre principal */
   $wp_customize->add_setting('hero_auteur', array(
-    'default' => __('Johnny Tan', 'theme_30w'),
+    'default' => __('Weiqiang Chen', 'theme_30w'),
     'sanitize_callback' => 'sanitize_text_field'
   ));
   
@@ -20,7 +20,7 @@ function theme_31w_customize_register($wp_customize) {
   ));
     /**Courriel */
     $wp_customize->add_setting('hero_courriel', array(
-        'default' => __('Johnny Tan', 'theme_30w'),
+        'default' => __('Weiqiang Chen', 'theme_30w'),
         'sanitize_callback' => 'sanitize_text_field'
       ));
       
