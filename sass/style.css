@@ -134,11 +134,7 @@ Le composant .carte
   height: 1.8rem;
   border: none;
   outline: none;
-  background-color: rgba(0, 0, 0, 0.02);
-  border-right: 1px dotted rgba(0, 0, 0, 0.2);
-}
-.recherche__input:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgb(255, 255, 255);
 }
 .recherche__img {
   flex: 0 0 20px;
