@@ -4,7 +4,8 @@ gabarit permettant d'afficher une carte
 */
 
 ?>
-<article class="carte carte--grande">                   
+<article class="carte carte--grande">
+                    
                     <div class="carte__contenu">
                         <?php
                         if(has_post_thumbnail()){

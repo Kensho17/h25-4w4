@@ -3,15 +3,17 @@ Le composant .carte
 ********************** */
 
 .carte {
-    border: 1px solid #ff5e00;
-    background-color: #ffc117;
+    border: 1px solid #f7a271;
+    background-color: #fae681;
     padding: 20px;
-    border-radius: 8px;
-    flex: 1 1 220px;
+    width: 300px;
+    height: 600px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   
     &--grande {
       padding: 40px;
-      max-width: 350px;
+     
     }
     &--petite{
       padding: 20px;
@@ -36,36 +38,36 @@ Le composant .carte
     }
   
     &__bouton {
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: #fff;
+      color: rgb(62, 104, 146);
+      font-size: 1.5rem;
       border: none;
       border-radius: 4px;
       cursor: pointer;
   
-      &--actif {
-        background-color: #0056b3;
-      }
-  
+     
       &:hover {
-        background-color: #0056b3;
+        color: rgb(150, 182, 214);
       }
     }
     & .post-categories {
       list-style-type: none;
       display: flex;
-      gap: 20px;
+      gap: 20px; 
       margin-top: 30px;
-      a {
-      text-decoration: none;
-      padding: 10px 10px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-top: 20px;
-      white-space: nowrap;
+      justify-content: flex-start;
+      padding: 0;
+
+
+    a {
+    text-decoration: none;
+    padding: 12px; 
+    background-color: rgb(62, 104, 146); 
+    color: #fff; 
+    border: none;
+    border-radius: 25px; 
+    cursor: pointer;
+    white-space: nowrap; 
+    display: inline-block;
       }
       
     }

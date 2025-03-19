@@ -1,52 +1,95 @@
-.burger{
-    display: none;
-    @media screen and (max-width:$point__rupture) {
-        display: block;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        z-index: 99;
-    }
-}
-.chk__burger{
-    display: none;
-}
-.chk__burger:checked ~ .entete__nav {
-    display: flex;
+/*
+  --------------------------------- Layout du pied de page
+*/
+footer {
+  background-color: rgb(44, 62, 80);
+  color: #b9d1f0;
 }
 
+.piedpage {
+  display: flex;
+  flex-direction: column;
 
+  &__s1 {
+      display: flex;
+      flex-wrap: nowrap; 
+      justify-content: center;
+      gap: 3rem;
+      padding: 2rem 0; 
+      &__externe, &__adresse, &__description {
+          flex: 1 1 30%; 
+          flex-direction: column;
+          text-align: center;
+          align-items: center;
+          & .menu { //ul
+              display: flex;
+              flex-direction: column;
+              gap: 1rem; 
+          }
+      }
+      &__adresse {
+          flex: 1 1 40%; 
+          &__coord{}
+          &__recherche{}
+      } 
+      &__description {
+          flex: 1 1 400px; 
+      }
+  }
 
-.entete{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(44, 62, 80);
+  &__s2 {
+      padding: 2vh 2vw;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+  }
 
-    &__nav {
-        display: flex;
-        justify-content: flex-end;
-        position: static;
-
-        @media  screen and (max-width:$point__rupture) {
-            display: none;
-            flex-direction: column;
-            height: 50vh;
-            width: 100vw;
-            gap: 30px 0;
-            padding-bottom: 20px;
-            gap: 30px 0;
-            position: absolute;
-            top: 0;
-            right: 0;
-            background-color: #fff;
-        }
-
-        flex-direction: row;
-        align-items: center;
-        gap: 0 40px;
-        flex-wrap: wrap ;
-    }
+  &__s3 {
+      display: flex;
+      justify-content: center;
+  }
 }
 
+@media (max-width: 1024px) {
+  .piedpage__s1 {
+      gap: 2rem;
+      flex-wrap: wrap; 
+      &__externe,
+      &__adresse,
+      &__description {
+          flex: 1 1 45%; 
+      }
+  }
+}
 
+@media (max-width: 768px) {
+  .piedpage__s1 {
+      gap: 1rem;
+      &__externe,&__adresse, &__description {
+          flex: 1 1 100%; 
+      }
+  }
+
+  .piedpage__s2 {
+      padding: 2vh 1vw; 
+      height: auto; 
+  }
+
+  .piedpage__s3 {
+      flex-direction: column; 
+  }
+}
+
+@media (max-width: 480px) {
+  .piedpage__s1 {
+      gap: 1rem;
+      &__externe, &__adresse, &__description {
+          flex: 1 1 100%; 
+      }
+  }
+
+  .piedpage__s2 {
+      padding: 2vh 0.5vw; 
+  }
+}
