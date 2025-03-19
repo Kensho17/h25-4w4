@@ -8,13 +8,15 @@
 
 <?php get_header() ?>
 <?php get_template_part('gabarit/hero'); ?>
-<?php get_template_part('gabarit/formulare'); ?>
+<?php get_template_part('gabarit/formulaire'); ?>
+
+
     <section class="populaire">
         <div class="boiteflex global">
-            <?php if (have_posts()) : while (have_posts()) : the_post(); ?> 
-            <?php if(in_category('galerie')){
+            <?php if (have_posts()) : while (have_posts()) : the_post(); 
+            if(in_category('galerie')){
                 the_content();
-            } else {?>
+            } else { ?>
             <?php get_template_part("gabarit/carte"); ?>
             <?php } ?>
             <?php endwhile; endif; ?>
