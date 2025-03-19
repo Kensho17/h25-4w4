@@ -31,12 +31,11 @@ body{
     background-color: rgb(243, 235, 129); 
     border: 2px solid rgba(255, 115, 0, 0.61);
     padding: 10px 20px; 
-    color: rgb(84, 101, 255); 
+    color: black; 
     font-size: 16px; 
     border-radius: 5px; 
     margin: 25px 0px 25px;
     cursor: pointer; 
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 .hero__icone-app{
     margin-top: 10px;
@@ -54,7 +53,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff2ab;
+    background-color: #ffe65b;
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.495);
     width: 75vw;
     height: auto;  
@@ -88,5 +87,3 @@ form {
     height: 2.5rem;
     margin-top: 18px;
 }
-
-
