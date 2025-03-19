@@ -1,14 +1,16 @@
-a{
+a {
+  color: $couleur__lien;
+  text-decoration: none;
+
+  &:hover {
+    color: rgba(0, 0, 0, 0.1);
+  }
+
+  &:visited {
     color: $couleur__lien;
-    text-decoration: none;
-    &:hover{
-        color : rgba(0,0,0,0.1);
-    }
-    &:visited{
-        color: $couleur__lien;
-    }
-    &:focus{
-        color: rgba(0,0,0,0.4);
-    }
-    
+  }
+
+  &:focus {
+    color: rgba(0, 0, 0, 0.4);
+  }
 }

@@ -1,7 +1,9 @@
-body{
-    font-family: Arial, Helvetica, sans-serif;
+// Définition de la famille de polices pour le corps du texte
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-p{
-    font-weight: bold;
+// Style pour les paragraphes
+p {
+  font-weight: normal; // Utilisation de 'normal' au lieu de 'bold' pour une meilleure flexibilité
 }

@@ -1,92 +1,118 @@
+/* -----------------------------------------
+   Styles globaux
+----------------------------------------- */
 .global {
-    padding: 10vh 5vw;
-    max-width: 1500px;
+  padding: 10vh 5vw;
+  max-width: 1500px;
 }
 
-body{
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+/* -----------------------------------------
+   Police du body
+----------------------------------------- */
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
+/* -----------------------------------------
+   Styles pour la section .populaire
+----------------------------------------- */
 .populaire .global {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
 }
 
-.hero{
-    min-height: 100vh;
-    background-repeat: no-repeat;
+/* -----------------------------------------
+   Styles pour l'élément .hero
+----------------------------------------- */
+.hero {
+  min-height: 100vh;
+  background-repeat: no-repeat;
 }
 
-.hero__titre{
-    text-shadow: 3px 3px rgb(251, 255, 8);
-    font-size: clamp(3rem, 4vw, 6rem);
+.hero__titre {
+  text-shadow: 3px 3px rgb(251, 255, 8);
+  font-size: clamp(3rem, 4vw, 6rem);
 }
-.hero__description, .hero__courriel, .hero__addresse, .hero__numero, .hero__auteur{
-    font-size: 20px;
-    color: rgb(255, 214, 138);
+
+.hero__description, 
+.hero__courriel, 
+.hero__addresse, 
+.hero__numero, 
+.hero__auteur {
+  font-size: 20px;
+  color: rgb(255, 214, 138);
 }
 
 .hero__bouton {
-    background-color: rgb(243, 235, 129); 
-    border: 2px solid rgba(255, 115, 0, 0.61);
-    padding: 10px 20px; 
-    color: rgb(84, 101, 255); 
-    font-size: 16px; 
-    border-radius: 5px; 
-    margin: 25px 0px 25px;
-    cursor: pointer; 
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-}
-.hero__icone-app{
-    margin-top: 10px;
+  background-color: rgb(94, 169, 255);
+  border: 2px solid rgba(168, 252, 255, 0.61);
+  padding: 10px 20px;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  border-radius: 5px;
+  margin: 25px 0;
+  cursor: pointer;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
+.hero__icone-app {
+  margin-top: 10px;
+}
+
+/* -----------------------------------------
+   Styles pour .boiteflex
+----------------------------------------- */
 .boiteflex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
-.formulaire{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff2ab;
-    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.495);
-    width: 75vw;
-    height: auto;  
-    min-height: 100px;  
-    bottom: 5vh;
-    padding: 10px;  
+/* -----------------------------------------
+   Styles pour .formulaire
+----------------------------------------- */
+.formulaire {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #659bff;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.495);
+  width: 75vw;
+  height: auto;
+  min-height: 100px;
+  bottom: 5vh;
+  padding: 10px;
 }
 
 .form__formulaire,
 form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 form {
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
+/* -----------------------------------------
+   Styles pour les inputs et boutons du formulaire
+----------------------------------------- */
 .formulaire__input,
 .formulaire__button {
-    border: 2px solid #2883ad;
-}
-.formulaire__input{
-    height: 2rem;
+  border: 2px solid #000000;
 }
 
-.formulaire__button{
-    width: 150px;
-    height: 2.5rem;
-    margin-top: 18px;
+.formulaire__input {
+  height: 2rem;
 }
 
-
+.formulaire__button {
+  width: 150px;
+  height: 2.5rem;
+  margin-top: 18px;
+}

@@ -1,17 +1,92 @@
-/* ----------------------------------------- .menu */
-.menu{ // ul
-  display : flex;
-  @media screen and (max-width: 800px) {
-  flex-direction: column;
-  }
+/* -----------------------------------------
+   .menu - Menu de navigation principal
+----------------------------------------- */
+.menu {
+  display: flex;
   flex-direction: row;
   list-style-type: none;
-  gap : 10px 0;
-  &-item{ // li
+  gap: 10px;
+  padding: 0;
+  margin: 0;
 
-     a { //a
-      text-decoration : none;
-      padding : 4px;
-     } 
+  // Styles pour les éléments du menu
+  &-item {
+    a {
+      text-decoration: none;
+      padding: 4px;
+      color: #333; // Couleur du texte des liens
+      transition: color 0.3s ease; // Transition pour l'effet hover
+    }
+
+    // Effet au survol des éléments du menu
+    &:hover a {
+      color: #f7a271; // Couleur au survol
+    }
+  }
+
+  // Styles pour les sous-menus
+  .submenu {
+    display: none;
+    position: absolute;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #fae681;
+    border: 1px solid #f7a271;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+
+    // Affichage du sous-menu au survol de l'élément parent
+    .menu-item:hover & {
+      display: block;
+    }
+
+    li {
+      padding: 8px;
+      width: 200px;
+      border-bottom: 1px solid #f7a271;
+
+      a {
+        padding: 8px;
+        display: block;
+        color: #333;
+        transition: background-color 0.3s ease;
+      }
+
+      a:hover {
+        background-color: #f7a271;
+        color: #fff;
+      }
+    }
+  }
+}
+
+// Styles pour les écrans de moins de 800px (responsive)
+@media screen and (max-width: 800px) {
+  .menu {
+    flex-direction: column;
+    align-items: flex-start;
+
+    &-item {
+      width: 100%;
+      text-align: left;
+
+      a {
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
+
+    // Affichage du sous-menu en bloc pour les petits écrans
+    .submenu {
+      position: relative;
+      width: 100%;
+      box-shadow: none;
+
+      .menu-item {
+        width: 100%;
+      }
+    }
   }
 }

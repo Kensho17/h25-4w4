@@ -1,46 +1,68 @@
 <footer>
     <?php
+    // Récupération des options du footer depuis le Customizer
     $footer_mission = get_theme_mod('footer_mission', 'Default Title');
     $footer_adresse = get_theme_mod('footer_adresse', 'Default Title');
     $footer_telephone = get_theme_mod('footer_telephone', 'Default Title');
-
     ?>
+    
     <div class="piedpage global">
+        
+        <!-- Section 1 : Informations diverses -->
         <section class="piedpage__s1">
-        <div class="piedpage__s1__externe">
-        <h2>Nos partenaires</h2>
-                <?php wp_nav_menu(array(
+            <div class="piedpage__s1__externe">
+                <h2>Nos partenaires</h2>
+                <?php
+                // Menu des partenaires
+                wp_nav_menu(array(
                     "menu" => "externe",
                     "container" => "nav",
                     "container_class" => "piedpage__s1__externe"
-                )); ?>
+                ));
+                ?>
             </div>
+            
             <div class="piedpage__s1__adresse">
                 <h2>Adresse et recherche</h2>
-                <p><?php echo $footer_adresse; ?></p>
-                <p><?php echo $footer_telephone; ?></p>
+                <p><?php echo esc_html($footer_adresse); ?></p>
+                <p><?php echo esc_html($footer_telephone); ?></p>
                 <div class="piedpage__s1__adresse__recherche">
-                    <?php get_search_form();   ?>
+                    <?php get_search_form(); ?>
                 </div>
             </div>
+            
             <div class="piedpage__s1__description">
                 <h2>Mission du club</h2>
-                <?php echo $footer_mission; ?>
+                <p><?php echo esc_html($footer_mission); ?></p>
             </div>
         </section>
+        
+        <!-- Section 2 : Icônes sociales -->
         <section class="piedpage__s2">
-                <img src="https://s2.svgbox.net/social.svg?ic=facebook&color=000000" width="20" height="20">
-                <img src="https://s2.svgbox.net/social.svg?ic=linkedin&color=000000" width="20" height="20">
-                <img src="https://s2.svgbox.net/social.svg?ic=paypal&color=000000" width="20" height="20">
-                <img src="https://s2.svgbox.net/social.svg?ic=stackoverflow&color=000000" width="20" height="20">
+            <a href="https://facebook.com" target="_blank">
+                <img src="https://s2.svgbox.net/social.svg?ic=facebook&color=000000" width="20" height="20" alt="Facebook">
+            </a>
+            <a href="https://linkedin.com" target="_blank">
+                <img src="https://s2.svgbox.net/social.svg?ic=linkedin&color=000000" width="20" height="20" alt="LinkedIn">
+            </a>
+            <a href="https://paypal.com" target="_blank">
+                <img src="https://s2.svgbox.net/social.svg?ic=paypal&color=000000" width="20" height="20" alt="PayPal">
+            </a>
+            <a href="https://stackoverflow.com" target="_blank">
+                <img src="https://s2.svgbox.net/social.svg?ic=stackoverflow&color=000000" width="20" height="20" alt="StackOverflow">
+            </a>
         </section>
+        
+        <!-- Section 3 : Menu principal -->
         <section class="piedpage__s3">
-        <?php wp_nav_menu(array(
-                    "menu" => "principal",
-                    "container" => "nav",
-                    "container_class" => ""
-                )); ?>
+            <?php wp_nav_menu(array(
+                "menu" => "principal",
+                "container" => "nav",
+                "container_class" => ""
+            )); ?>
         </section>
+        
     </div>
 </footer>
-<?php wp_footer() ?>
+
+<?php wp_footer(); ?>
