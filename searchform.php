@@ -1,4 +1,4 @@
- <?php
+<?php
 /**
 * gabarit servant à la création d'un formulaire de recherche
 */
