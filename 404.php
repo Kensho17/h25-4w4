@@ -19,6 +19,17 @@ get_header(); ?>
                 'menu_id'        => 'menu-404',
             ) );
             ?>
+            
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                    <img src="https://s2.svgbox.net/social.svg?ic=facebook&color=000000" width="20" height="20" alt="Facebook">
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                    <img src="https://s2.svgbox.net/social.svg?ic=twitter&color=000000" width="20" height="20" alt="Twitter">
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                    <img src="https://s2.svgbox.net/social.svg?ic=linkedin&color=000000" width="20" height="20" alt="LinkedIn">
+                </a>
             </div>
         </div><!-- .page-content -->
     </section><!-- .error-404 -->
