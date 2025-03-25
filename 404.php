@@ -7,7 +7,7 @@ get_header(); ?>
 <main id="content" class="site-main">
     <section class="error-404 not-found">
         <header class="page-header">
-            <h1 class="page-title"><?php esc_html_e( 'Page non trouvée', 'votre-theme' ); ?></h1>
+            <h1 class="page-title"><?php esc_html_e( 'Erreur 404 Page non trouvée!', 'votre-theme' ); ?></h1>
         </header><!-- .page-header -->
 
         <div class="page-content">
