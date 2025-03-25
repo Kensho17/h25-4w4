@@ -1,7 +1,6 @@
 <?php
-/**
- * Template pour la page 404
- */
+// Récupération des options du customizer
+$page404_background = get_theme_mod('404_background', 'Default Title');
 get_header(); ?>
 
 <main id="content" class="site-main">

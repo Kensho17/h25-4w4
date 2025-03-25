@@ -103,6 +103,16 @@ function theme_30w_customize_register($wp_customize) {
         'section' => 'hero_section',
     )));
 
+     // ====== Page 404 ======
+     $wp_customize->add_setting('page404_background', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'page404_background', array(
+        'label'   => __('Image en background', 'theme_30w'),
+        'section' => 'error-404 not-found',
+    )));
+
 }
 
 add_action('customize_register', 'theme_30w_customize_register');
