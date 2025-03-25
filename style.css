@@ -234,6 +234,10 @@ Les composants
   }
 }
 
+main#content {
+  text-align: center;
+}
+
 /* /////////////////////////
 Layout
 /////////////////////////// */
