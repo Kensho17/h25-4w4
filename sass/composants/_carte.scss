@@ -11,16 +11,6 @@
   box-sizing: border-box;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 
-  // Modificateur pour les cartes grandes
-  &--grande {
-    padding: 40px;
-  }
-
-  // Modificateur pour les cartes petites
-  &--petite {
-    padding: 20px;
-  }
-
   // Styles pour l'image à l'intérieur de la carte
   &__image img {
     max-width: 100%;

@@ -128,12 +128,6 @@ Les composants
   box-sizing: border-box;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
-.carte--grande {
-  padding: 40px;
-}
-.carte--petite {
-  padding: 20px;
-}
 .carte__image img {
   max-width: 100%;
   border-radius: 8px;
@@ -203,12 +197,6 @@ Les composants
   border-radius: 4px;
   box-sizing: border-box;
 }
-.recherche__input::-moz-placeholder {
-  font-family: "Arial", sans-serif;
-  font-size: 1rem;
-  font-style: italic;
-  color: #888;
-}
 .recherche__input::placeholder {
   font-family: "Arial", sans-serif;
   font-size: 1rem;
@@ -225,8 +213,7 @@ Les composants
 .recherche__img img {
   width: 1.5rem;
   height: 1.5rem;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 @media screen and (max-width: 800px) {
   .recherche {
@@ -235,7 +222,52 @@ Les composants
 }
 
 main#content {
+  padding-bottom: 80px;
   text-align: center;
+}
+
+.menu, .entete__nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-404.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 30px;
+}
+
+h1.page-title {
+  font-size: xx-large;
+}
+
+.error-404 {
+  background-image: url("/images/erreur-404.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.menu-404-button {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.menu-404-button button {
+  background-color: #2883ad;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-404-button button:hover {
+  background-color: #1d6b95;
 }
 
 /* /////////////////////////
@@ -246,7 +278,6 @@ Layout
 ----------------------------------------- */
 .global {
   padding: 10vh 5vw;
-  max-width: 1500px;
 }
 
 /* -----------------------------------------
@@ -466,6 +497,7 @@ footer {
 .piedpage {
   display: flex;
   flex-direction: column;
+  background-color: rgb(0, 0, 0);
 }
 .piedpage__s1 {
   display: flex;
@@ -540,4 +572,4 @@ footer {
   .piedpage__s2 {
     padding: 2vh 0.5vw;
   }
-}/*# sourceMappingURL=style.css.map */
+}
