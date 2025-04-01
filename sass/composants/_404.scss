@@ -1,48 +1,77 @@
-main#content {
-    padding-bottom: 80px;
+/* SECTION .page-404 */
+.page-404 {
+    background: var(--bg-image) no-repeat center center;
+    background-size: cover;
     text-align: center;
-}
-
-.menu, .entete__nav {
+    padding: 100px 20px;
+    color: orange;
+  }
+  
+  /* BOUTON DE RETOUR À L’ACCUEIL */
+  .btn-404 {
+    background-color: var(--btn-color);
+    padding: 15px 25px;
+    color: lightblue;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 20px;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  
+  /* MENU 404 */
+  .page-404 .menu-404-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto;
     display: flex;
     justify-content: center;
-    align-items: center;
-}
-
-.error-404.not-found{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 30px;
-}
-
-h1.page-title{
-    font-size: xx-large;
-}
-
-.error-404 {
-    background-image: url('/images/erreur-404.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.menu-404-button {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.menu-404-button button {
-    background-color: #2883ad;
-    color: #fff;
-    border: none;
-    padding: 12px 24px;
-    font-size: 16px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .page-404 .menu-404-list li {
+    margin: 0;
+  }
+  .page-404 .menu-404-list li a {
+    display: inline-block;
+    background-color: var(--btn-color);
+    color: #000;
+    text-decoration: none;
+    padding: 10px 20px;
     border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.menu-404-button button:hover {
-    background-color: #1d6b95;
-}
+    font-weight: bold;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  
+  /* BARRE DE RECHERCHE */
+  .page-404 .search-404 {
+    margin-top: 20px;
+  }
+  .page-404 .recherche {
+    display: inline-block;
+    position: relative;
+  }
+  .page-404 .recherche__input {
+    border: none;
+    border-bottom: 2px solid var(--btn-color);
+    background-color: transparent;
+    color: var(--btn-color);
+    font-size: 1.2rem;
+    padding: 5px;
+    outline: none;
+    width: 200px;
+    text-align: center;
+  }
+  .page-404 .recherche__input::placeholder {
+    color: var(--btn-color);
+    opacity: 1;
+  }
+  .page-404 .recherche__bouton {
+    display: none;
+  }
+  

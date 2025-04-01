@@ -213,63 +213,12 @@ Les composants
 .recherche__img img {
   width: 1.5rem;
   height: 1.5rem;
-  object-fit: contain;
 }
 @media screen and (max-width: 800px) {
   .recherche {
     display: none;
   }
 }
-
-main#content {
-  padding-bottom: 80px;
-  text-align: center;
-}
-
-.menu, .entete__nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.error-404.not-found {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 30px;
-}
-
-h1.page-title {
-  font-size: xx-large;
-}
-
-.error-404 {
-  background-image: url("/images/erreur-404.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.menu-404-button {
-  text-align: center;
-  margin: 20px 0;
-}
-
-.menu-404-button button {
-  background-color: #2883ad;
-  color: #fff;
-  border: none;
-  padding: 12px 24px;
-  font-size: 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.menu-404-button button:hover {
-  background-color: #1d6b95;
-}
-
 /* /////////////////////////
 Layout
 /////////////////////////// */
@@ -572,4 +521,4 @@ footer {
   .piedpage__s2 {
     padding: 2vh 0.5vw;
   }
-}
+}/*# sourceMappingURL=style.css.map */
