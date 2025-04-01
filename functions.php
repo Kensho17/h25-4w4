@@ -3,11 +3,9 @@
 include "functions/customizer.php";
 include "functions/options.php";
 
-// Enregistrement des emplacements de menu
-function votre_theme_register_menus() {
-    register_nav_menus( array(
-        'menu_404' => __( 'Menu 404', 'votre-theme' ),
-    ) );
+function clubvoyage_register_menus() {
+    register_nav_menus(array(
+        '404_menu' => __('Menu 404', 'clubvoyage'),
+    ));
 }
-add_action( 'after_setup_theme', 'votre_theme_register_menus' );
-?>
+add_action('init', 'clubvoyage_register_menus');

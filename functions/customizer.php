@@ -104,4 +104,74 @@ function theme_31w_customize_register( $wp_customize ) {
     ) ) );
 }
 add_action( 'customize_register', 'theme_31w_customize_register' );
+
+function clubvoyage_customize_register($wp_customize) {
+
+    // ====== Section Page 404 ======
+    $wp_customize->add_section('section_404', array(
+        'title'    => __('Page 404', 'clubvoyage'),
+        'priority' => 30,
+    ));
+
+    // Réglage de l’image d’arrière-plan
+    $wp_customize->add_setting('clubvoyage_404_bg_image', array(
+        'default'   => get_template_directory_uri() . '/images/404_background.jpg',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'clubvoyage_404_bg_image',
+            array(
+                'label'    => __('Image d’arrière-plan pour la 404', 'clubvoyage'),
+                'section'  => 'section_404',
+                'settings' => 'clubvoyage_404_bg_image'
+            )
+        )
+    );
+
+    // Réglage de la couleur des boutons et de la zone de recherche
+    $wp_customize->add_setting('clubvoyage_404_btn_color', array(
+        'default'   => '#ffcc00',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'clubvoyage_404_btn_color',
+            array(
+                'label'    => __('Couleur des boutons et zone de recherche', 'clubvoyage'),
+                'section'  => 'section_404',
+                'settings' => 'clubvoyage_404_btn_color',
+            )
+        )
+    );
+
+    // Réglage pour le titre de la page 404
+    $wp_customize->add_setting('clubvoyage_404_title', array(
+        'default'   => __('Oops, vous êtes perdu !', 'clubvoyage'),
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('clubvoyage_404_title', array(
+        'label'    => __('Titre de la page 404', 'clubvoyage'),
+        'section'  => 'section_404',
+        'type'     => 'text',
+    ));
+
+    // Réglage pour le message de la page 404
+    $wp_customize->add_setting('clubvoyage_404_message', array(
+        'default'   => __('La page que vous cherchez n’existe pas. Retournez à l’accueil ou utilisez la recherche pour trouver ce que vous cherchez.', 'clubvoyage'),
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('clubvoyage_404_message', array(
+        'label'    => __('Message de la page 404', 'clubvoyage'),
+        'section'  => 'section_404',
+        'type'     => 'textarea',
+    ));
+}
+add_action('customize_register', 'clubvoyage_customize_register');
 ?>
