@@ -197,6 +197,12 @@ Les composants
   border-radius: 4px;
   box-sizing: border-box;
 }
+.recherche__input::-moz-placeholder {
+  font-family: "Arial", sans-serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: #888;
+}
 .recherche__input::placeholder {
   font-family: "Arial", sans-serif;
   font-size: 1rem;
@@ -213,12 +219,103 @@ Les composants
 .recherche__img img {
   width: 1.5rem;
   height: 1.5rem;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 @media screen and (max-width: 800px) {
   .recherche {
     display: none;
   }
 }
+
+/* SECTION .page-404 */
+.page-404 {
+  background: var(--bg-image) no-repeat center center;
+  background-size: cover;
+  text-align: center;
+  padding: 100px 20px;
+  color: orange;
+}
+
+/* BOUTON DE RETOUR À L’ACCUEIL */
+.btn-404 {
+  background-color: var(--btn-color);
+  padding: 15px 25px;
+  color: lightblue;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 20px;
+}
+.btn-404:hover {
+  opacity: 0.8;
+}
+
+/* MENU 404 */
+.page-404 .menu-404-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.page-404 .menu-404-list li {
+  margin: 0;
+}
+
+.page-404 .menu-404-list li a {
+  display: inline-block;
+  background-color: var(--btn-color);
+  color: #000;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+.page-404 .menu-404-list li a:hover {
+  opacity: 0.8;
+}
+
+/* BARRE DE RECHERCHE */
+.page-404 .search-404 {
+  margin-top: 20px;
+}
+
+.page-404 .recherche {
+  display: inline-block;
+  position: relative;
+}
+
+.page-404 .recherche__input {
+  border: none;
+  border-bottom: 2px solid var(--btn-color);
+  background-color: transparent;
+  color: var(--btn-color);
+  font-size: 1.2rem;
+  padding: 5px;
+  outline: none;
+  width: 200px;
+  text-align: center;
+}
+
+.page-404 .recherche__input::-moz-placeholder {
+  color: var(--btn-color);
+  opacity: 1;
+}
+
+.page-404 .recherche__input::placeholder {
+  color: var(--btn-color);
+  opacity: 1;
+}
+
+.page-404 .recherche__bouton {
+  display: none;
+}
+
 /* /////////////////////////
 Layout
 /////////////////////////// */
