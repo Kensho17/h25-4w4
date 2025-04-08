@@ -24,21 +24,24 @@ function mon_theme_supports() {
 add_action('after_setup_theme', 'mon_theme_supports');
 
 /**
- * Enqueue les styles du thème
+ * Enqueue les styles du thème – Version options.
+ *
+ * Cette fonction enfile des fichiers CSS différents (par exemple,
+ * si le fichier normalize.css se trouve dans un dossier /css/).
  */
-function theme_tp_enqueue_styles() {
-    // Ajout du style normalize.css
-    wp_enqueue_style('normalize', get_template_directory_uri() . '/css/normalize.css');
+function theme_tp_enqueue_styles_options() {
+    // Enfile le style normalize.css situé dans le dossier /css/
+    wp_enqueue_style('normalize-options', get_template_directory_uri() . '/css/normalize.css');
     
-    // Ajout du style principal
-    wp_enqueue_style('main-style', get_stylesheet_uri());
+    // Enfile le style principal du thème
+    wp_enqueue_style('main-style-options', get_stylesheet_uri());
 }
-add_action('wp_enqueue_scripts', 'theme_tp_enqueue_styles');
+add_action('wp_enqueue_scripts', 'theme_tp_enqueue_styles_options');
 
 /**
  * Modifie la requête principale de WordPress
  *
- * @param WP_Query $query La requête principale
+ * @param WP_Query $query La requête principale.
  */
 function modifie_requete_principal($query) {
     if ($query->is_home() && $query->is_main_query() && !is_admin()) {

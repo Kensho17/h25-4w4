@@ -306,14 +306,26 @@ Les composants
 
 .categorie__ul {
   display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
+  gap: 5px;
   list-style-type: none;
+  cursor: pointer;
 }
 .categorie__ul__li {
-  border: 1px solid white;
-  padding: 3px;
-  cursor: pointer;
+  border: 1px solid #aaa;
+  background-color: #007bff;
+  border-radius: 4px;
+  padding: 15px;
+  color: white;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.3s;
+}
+.categorie__ul__li:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.categorie__ul__li.active {
+  background-color: #0056b3;
 }
 
 /* /////////////////////////
