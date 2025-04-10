@@ -306,8 +306,10 @@ Les composants
 
 .categorie__ul {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 5px;
-  list-style-type: none;
+  list-style: none;
   cursor: pointer;
 }
 .categorie__ul__li {
@@ -315,17 +317,37 @@ Les composants
   background-color: #007bff;
   border-radius: 4px;
   padding: 15px;
-  color: white;
+  color: #000;
   text-align: center;
-  transition: background-color 0.3s, transform 0.3s;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 .categorie__ul__li:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
 }
-
 .categorie__ul__li.active {
   background-color: #0056b3;
+}
+
+.descriptionArticleCategorie {
+  display: none;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+.descriptionArticleCategorie.active {
+  display: block;
+  max-height: 300px;
+  opacity: 1;
+}
+
+.TitreArticleCategorie {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.TitreArticleCategorie:hover {
+  color: #0056b3;
 }
 
 /* /////////////////////////
@@ -630,4 +652,16 @@ footer {
   .piedpage__s2 {
     padding: 2vh 0.5vw;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+.hero {
+  min-height: 100vh;
+  position: relative;
+}
+.hero__carrousel {
+  position: absolute;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+}

@@ -29,15 +29,6 @@ function mon_theme_supports() {
 }
 add_action('after_setup_theme', 'mon_theme_supports');
 
-/**
- * Enfile les fichiers CSS et JS du thème.
- *
- * Cette fonction :
- * - Enfile un fichier normalize.css situé dans le dossier /css/ (vous pouvez adapter le chemin si nécessaire)
- * - Enfile le style principal (style.css)
- * - Enfile le script destination.js, en utilisant filemtime() pour le versionnement
- * - Localise le script pour transmettre la base URL du site au JavaScript
- */
 function theme_tp_enqueue_styles() {
     // Enfile le style normalize.css (ici dans /css/)
     wp_enqueue_style('normalize', get_template_directory_uri() . '/css/normalize.css', array(), null);

@@ -1,25 +1,62 @@
+// Variables de configuration
+$primary-color: #007bff;
+$hover-color: #0056b3;
+$border-color: #aaa;
+$text-color: #000;
+$transition-duration: 0.3s;
+$accordion-transition-duration: 0.5s;
+$padding: 15px;
+$border-radius: 4px;
+$accordion-max-height: 300px;
+
 .categorie__ul {
-    display: flex;
-    gap: 5px;
-    list-style-type: none;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  list-style: none;
+  cursor: pointer;
 
-    &__li {
-        border: 1px solid #aaa;
-        background-color: #007bff;
-        border-radius: 4px;
-        padding: 15px;
-        color: white;
-        text-align: center;
-        transition: background-color 0.3s, transform 0.3s;
+  &__li {
+    border: 1px solid $border-color;
+    background-color: $primary-color;
+    border-radius: $border-radius;
+    padding: $padding;
+    color: $text-color;
+    text-align: center;
+    transition: background-color $transition-duration ease, transform $transition-duration ease;
 
-        &:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-        }
+    &:hover {
+      background-color: $hover-color;
+      transform: translateY(-2px);
     }
+
+    // Active state (ajouté dans le même contexte pour éviter de répéter la règle à l'extérieur)
+    &.active {
+      background-color: $hover-color;
+    }
+  }
 }
 
-.categorie__ul__li.active {
-    background-color: #0056b3;
+.descriptionArticleCategorie {
+    display: none;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height $accordion-transition-duration ease, opacity $accordion-transition-duration ease;
+
+  &.active {
+    display: block; 
+    max-height: $accordion-max-height;
+    opacity: 1;
+  }
+}
+
+.TitreArticleCategorie {
+  cursor: pointer;
+  transition: color $transition-duration ease;
+
+  &:hover {
+    color: $hover-color;
+  }
 }
