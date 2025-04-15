@@ -19,7 +19,11 @@
     <div class= "hero__carrousel" style="background-image: url(<?php echo $hero_background[0]?>);"></div>
     <div class= "hero__carrousel" style="background-image: url(<?php echo $hero_background[1]?>);"></div>
     <div class= "hero__carrousel" style="background-image: url(<?php echo $hero_background[2]?>);"></div>
-
+    <div class="hero_radio">
+        <input class="hero_radio_input" type="radio" name="carrousel" data-id_carrousel="0" checked="checked">
+        <input class="hero_radio_input" type="radio" name="carrousel" data-id_carrousel="1">
+        <input class="hero_radio_input" type="radio" name="carrousel" data-id_carrousel="2">
+    </div>
     <!--////////////////////////////////////////////////////////////////////////////////////hero__contenu-->
 
     <div class="hero__contenu global">

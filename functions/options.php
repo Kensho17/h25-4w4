@@ -44,6 +44,15 @@ function theme_tp_enqueue_styles() {
         filemtime(get_template_directory() . '/js/destination.js'),
         true
     );
+
+    wp_enqueue_script(
+        'carrousel.js',
+        get_template_directory_uri() . '/js/carrousel.js',
+        array(),
+        filemtime(get_template_directory() . 
+        '/js/carrousel.js'),
+        true
+      );
     
     // Localise le script pour passer la base URL correcte au JavaScript
     $localize_array = array(
