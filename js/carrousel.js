@@ -1,40 +1,47 @@
 (function(){
-    console.log("caroussel.js")
-    let hero__radio__input = document.querySelectorAll(".hero__radio__input")
-    let hero__caroussels = document.querySelectorAll(".hero__caroussel");
-
-    console.log("hero__radio__input.length : ",hero__radio__input.length);
-
-    let indexActuel = 0;
-    const total = hero__radio__input.length;
-
-    function changementAutomatique(index){
-        hero__radio__input[index].checked = true;
-
-        // Supprime "active" de toutes les caroussels
-        hero__caroussels.forEach(c => c.classList.remove("active"));
-
-        // Ajoute "active" au carrousel correspondant
-        if (hero__caroussels[index]) {
-            hero__caroussels[index].classList.add("active");
-        }
+    console.log('carrousel.js');
+  
+    // Sélection des radios et des slides
+    const radios = document.querySelectorAll('.hero__radio__input');
+    const slides = document.querySelectorAll('.hero__carrousel');
+    console.log('Nombre de radios :', radios.length, '– Nombre de slides :', slides.length);
+  
+    let currentIndex = 0;
+    const total = slides.length;
+  
+    /**
+     * Affiche la slide d'indice idx et coche la radio correspondante.
+     * @param {number} idx
+     */
+    function showSlide(idx) {
+      // Coche la bonne radio
+      radios[idx].checked = true;
+  
+      // Masque toutes les slides
+      slides.forEach(slide => slide.classList.remove('hero__carrousel--active'));
+  
+      // Affiche la slide idx
+      slides[idx].classList.add('hero__carrousel--active');
     }
-
-    // Déclenche une fois au chargement
-    changementAutomatique(indexActuel);
-
-    // Change toutes les 5 secondes
-    setInterval(() => {
-        indexActuel = (indexActuel + 1) % total;
-        changementAutomatique(indexActuel);
-    }, 5000); 
-
-    // Quand l'utilisateur clique sur un bouton radio
-    hero__radio__input.forEach((radio, index) => {
+  
+    // Initialisation si on a au moins une slide
+    if (total > 0) {
+      showSlide(0);
+  
+      // Défilement automatique toutes les 5 secondes
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % total;
+        showSlide(currentIndex);
+      }, 5000);
+  
+      // Navigation manuelle via les radios
+      radios.forEach((radio, idx) => {
         radio.addEventListener('change', () => {
-            indexActuel = index;
-            changementAutomatique(index); // Ajouté ici aussi pour mettre à jour visuellement
+          currentIndex = idx;
+          showSlide(idx);
         });
-    });
-
-})();
+      });
+    } else {
+      console.warn('Aucune slide trouvée pour le carrousel.');
+    }
+  })();
