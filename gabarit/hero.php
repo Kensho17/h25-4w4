@@ -61,6 +61,6 @@ for ($i = 0; $i < 3; $i++) {
     </div>
 
     <button class="hero__bouton">S'inscrire</button>
-    <p class="hero__auteur">Auteur : <?php echo esc_html($hero_auteur); ?></p>
+    <p class="hero__auteur">Auteur : Weiqiang Chen</p>
   </div>
 </section>

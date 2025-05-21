@@ -128,6 +128,12 @@ Les composants
   box-sizing: border-box;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
+.carte--grande {
+  padding: 40px;
+}
+.carte--petite {
+  padding: 20px;
+}
 .carte__image img {
   max-width: 100%;
   border-radius: 8px;
@@ -155,27 +161,37 @@ Les composants
   color: rgb(44, 150, 255);
 }
 .carte .post-categories {
-  list-style-type: none;
+  list-style: none;
   display: flex;
   gap: 20px;
   margin-top: 30px;
-  justify-content: flex-start;
   padding: 0;
 }
 .carte .post-categories a {
-  text-decoration: none;
+  display: inline-block;
   padding: 12px;
   background-color: rgb(102, 121, 230);
   color: #fff;
-  border: none;
+  text-decoration: none;
   border-radius: 25px;
   cursor: pointer;
   white-space: nowrap;
-  display: inline-block;
   transition: background-color 0.3s ease;
 }
 .carte .post-categories a:hover {
   background-color: rgb(17, 0, 255);
+}
+.carte__categorie a {
+  display: inline-block;
+  padding: 0.4em 0.8em;
+  background-color: #3d4288;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-right: 0.5em;
+}
+.carte__categorie a:hover {
+  background-color: #ddd;
 }
 
 .recherche {
@@ -308,7 +324,7 @@ Les composants
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 2rem;
   list-style: none;
   cursor: pointer;
 }
@@ -317,29 +333,37 @@ Les composants
   background-color: #007bff;
   border-radius: 4px;
   padding: 15px;
-  color: #000;
+  color: #fff;
   text-align: center;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
-.categorie__ul__li:hover {
+.categorie__ul__li:hover, .categorie__ul__li.active {
   background-color: #0056b3;
   transform: translateY(-2px);
 }
-.categorie__ul__li.active {
-  background-color: #0056b3;
+
+.destination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20vw 10vh;
 }
 
-.descriptionArticleCategorie {
-  display: none;
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease, opacity 0.5s ease;
+.destination__list {
+  width: 100%;
 }
-.descriptionArticleCategorie.active {
-  display: block;
-  max-height: 300px;
-  opacity: 1;
+.destination__list div {
+  background-color: #007bff;
+  color: #fff;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.destination__list div:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }
 
 .TitreArticleCategorie {
@@ -348,6 +372,17 @@ Les composants
 }
 .TitreArticleCategorie:hover {
   color: #0056b3;
+}
+
+.descriptionArticleCategorie {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+.descriptionArticleCategorie.active {
+  max-height: 300px;
+  opacity: 1;
 }
 
 /* /////////////////////////
@@ -377,18 +412,20 @@ body {
 }
 
 /* -----------------------------------------
-   Styles pour l'élément .hero
+   Styles pour .hero
 ----------------------------------------- */
 .hero {
   min-height: 100vh;
   background-repeat: no-repeat;
 }
 
+/* Titre du hero */
 .hero__titre {
   text-shadow: 3px 3px rgb(251, 255, 8);
   font-size: clamp(3rem, 4vw, 6rem);
 }
 
+/* Textes du hero */
 .hero__description,
 .hero__courriel,
 .hero__addresse,
@@ -398,6 +435,7 @@ body {
   color: rgb(255, 214, 138);
 }
 
+/* Bouton du hero */
 .hero__bouton {
   background-color: rgb(94, 169, 255);
   border: 2px solid rgba(168, 252, 255, 0.61);
@@ -410,6 +448,7 @@ body {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
+/* Icônes du hero */
 .hero__icone-app {
   margin-top: 10px;
 }
@@ -441,6 +480,7 @@ body {
   padding: 10px;
 }
 
+/* Formulaire et conteneurs */
 .form__formulaire,
 form {
   display: flex;
@@ -469,6 +509,14 @@ form {
   width: 150px;
   height: 2.5rem;
   margin-top: 18px;
+}
+
+/* -----------------------------------------
+   Styles pour les titres et descriptions de catégorie
+----------------------------------------- */
+.categorie__titre,
+.categorie__description {
+  text-align: center;
 }
 
 /* -----------------------------------------
@@ -566,91 +614,64 @@ form {
     display: flex;
   }
 }
-/*
-  --------------------------------- Layout du pied de page
-*/
 footer {
-  background-color: rgb(0, 0, 0);
-  color: #77acf1;
+  position: relative;
+  background-color: rgb(44, 62, 80);
+  color: #b9d1f0;
 }
-
-.piedpage {
+footer .vague {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+}
+footer .piedpage {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  background-color: rgb(0, 0, 0);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }
-.piedpage__s1 {
+footer .piedpage__s1 {
   display: flex;
-  flex-wrap: nowrap;
   justify-content: center;
   gap: 3rem;
-  padding: 2rem 0;
+  flex-wrap: wrap;
+  padding-bottom: 2rem;
 }
-.piedpage__s1__externe, .piedpage__s1__adresse, .piedpage__s1__description {
+footer .piedpage__s1__externe, footer .piedpage__s1__adresse, footer .piedpage__s1__description {
   flex: 1 1 30%;
-  flex-direction: column;
   text-align: center;
-  align-items: center;
 }
-.piedpage__s1__externe .menu, .piedpage__s1__adresse .menu, .piedpage__s1__description .menu {
+footer .piedpage__s1__externe__recherche, footer .piedpage__s1__adresse__recherche, footer .piedpage__s1__description__recherche {
+  margin-top: 1rem;
+}
+footer .piedpage__s1__externe nav.menu, footer .piedpage__s1__adresse nav.menu, footer .piedpage__s1__description nav.menu {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.piedpage__s1__adresse {
-  flex: 1 1 40%;
-}
-.piedpage__s1__description {
-  flex: 1 1 400px;
-}
-.piedpage__s2 {
-  padding: 2vh 2vw;
-  height: 30px;
+footer .piedpage__s2 {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 1rem;
+  padding: 1rem 0;
 }
-.piedpage__s3 {
+footer .piedpage__s3 {
   display: flex;
   justify-content: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
 }
 
-/* Responsive design pour les écrans jusqu'à 1024px */
-@media (max-width: 1024px) {
-  .piedpage__s1 {
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-  .piedpage__s1__externe, .piedpage__s1__adresse, .piedpage__s1__description {
-    flex: 1 1 45%;
-  }
-}
-/* Responsive design pour les écrans jusqu'à 768px */
 @media (max-width: 768px) {
-  .piedpage__s1 {
-    gap: 1rem;
-  }
-  .piedpage__s1__externe, .piedpage__s1__adresse, .piedpage__s1__description {
-    flex: 1 1 100%;
-  }
-  .piedpage__s2 {
-    padding: 2vh 1vw;
-    height: auto;
-  }
-  .piedpage__s3 {
+  footer .piedpage__s1 {
     flex-direction: column;
-  }
-}
-/* Responsive design pour les écrans jusqu'à 480px */
-@media (max-width: 480px) {
-  .piedpage__s1 {
-    gap: 1rem;
-  }
-  .piedpage__s1__externe, .piedpage__s1__adresse, .piedpage__s1__description {
-    flex: 1 1 100%;
-  }
-  .piedpage__s2 {
-    padding: 2vh 0.5vw;
+    gap: 2rem;
   }
 }
 .hero {
@@ -674,11 +695,11 @@ footer {
 }
 .hero__radio {
   position: absolute;
-  bottom: 4rem;
+  bottom: 8rem;
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 3rem;
+  gap: 6rem;
   z-index: 1;
 }
 .hero__radio__input {
@@ -696,41 +717,68 @@ footer {
 .hero__contenu {
   position: relative;
   z-index: 1;
-  padding: 4rem;
+  padding: 8rem;
   color: #fff;
 }
-.hero__contenu__titre {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  margin-bottom: 3rem;
+.hero__contenu .hero__titre {
+  text-shadow: 3px 3px rgb(251, 255, 8);
+  font-size: clamp(2.5rem, 5vw, 6rem);
+  margin-bottom: 6rem;
 }
-.hero__contenu__description {
-  font-size: 1.2rem;
-  margin-bottom: 4rem;
+.hero__contenu .hero__description, .hero__contenu .hero__courriel, .hero__contenu .hero__addresse, .hero__contenu .hero__numero, .hero__contenu .hero__auteur {
+  font-size: 1.25rem;
+  color: rgb(255, 214, 138);
+  margin-bottom: 0.5rem;
 }
 .hero__contenu__bouton {
+  margin: 6rem 0;
   padding: 0.75rem 1.5rem;
-  background: rgba(255, 255, 255, 0.3);
-  border: none;
+  background: rgb(243, 235, 129);
+  border: 2px solid rgba(255, 115, 0, 0.61);
   border-radius: 5px;
-  color: #fff;
+  color: rgb(84, 101, 255);
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 .hero__contenu__bouton:hover {
-  background: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+.hero__contenu .hero__icone-app {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.hero__contenu .hero__icone-app img {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .hero__radio {
-    bottom: 3rem;
+    bottom: 6rem;
+    gap: 4rem;
   }
+}
+@media (max-width: 768px) {
   .hero__contenu {
-    padding: 3rem;
+    padding: 6rem;
   }
-  .hero__contenu__titre {
-    font-size: clamp(2rem, 6vw, 3rem);
+  .hero__contenu .hero__titre {
+    font-size: clamp(2rem, 6vw, 4rem);
   }
-  .hero__contenu__description {
+  .hero__contenu .hero__description {
     font-size: 1rem;
+    margin-bottom: 8rem;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+@media (max-width: 480px) {
+  .hero__contenu {
+    padding: 3rem 1.5rem;
+  }
+  .hero__contenu .hero__titre {
+    font-size: clamp(1.5rem, 8vw, 3rem);
+  }
+}
