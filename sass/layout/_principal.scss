@@ -22,27 +22,30 @@ body {
 }
 
 /* -----------------------------------------
-   Styles pour l'élément .hero
+   Styles pour .hero
 ----------------------------------------- */
 .hero {
   min-height: 100vh;
   background-repeat: no-repeat;
 }
 
+/* Titre du hero */
 .hero__titre {
   text-shadow: 3px 3px rgb(251, 255, 8);
   font-size: clamp(3rem, 4vw, 6rem);
 }
 
-.hero__description, 
-.hero__courriel, 
-.hero__addresse, 
-.hero__numero, 
+/* Textes du hero */
+.hero__description,
+.hero__courriel,
+.hero__addresse,
+.hero__numero,
 .hero__auteur {
   font-size: 20px;
   color: rgb(255, 214, 138);
 }
 
+/* Bouton du hero */
 .hero__bouton {
   background-color: rgb(94, 169, 255);
   border: 2px solid rgba(168, 252, 255, 0.61);
@@ -55,6 +58,7 @@ body {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
+/* Icônes du hero */
 .hero__icone-app {
   margin-top: 10px;
 }
@@ -86,6 +90,7 @@ body {
   padding: 10px;
 }
 
+/* Formulaire et conteneurs */
 .form__formulaire,
 form {
   display: flex;
@@ -114,4 +119,12 @@ form {
   width: 150px;
   height: 2.5rem;
   margin-top: 18px;
+}
+
+/* -----------------------------------------
+   Styles pour les titres et descriptions de catégorie
+----------------------------------------- */
+.categorie__titre,
+.categorie__description {
+  text-align: center;
 }

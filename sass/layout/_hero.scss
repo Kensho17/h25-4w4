@@ -7,8 +7,13 @@ $spacing-base: 6rem;
 $spacing-lg: 8rem;
 
 $color-white: #fff;
+$color-text: rgb(255, 214, 138);
 $color-overlay: rgba(255, 255, 255, 0.3);
 $color-overlay-hover: rgba(255, 255, 255, 0.6);
+$color-button-bg: rgb(243, 235, 129);
+$color-button-border: rgba(255, 115, 0, 0.61);
+$color-button-text: rgb(84, 101, 255);
+$font-fallback: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 
 // ================================
 // Hero & Carrousel
@@ -29,7 +34,7 @@ $color-overlay-hover: rgba(255, 255, 255, 0.6);
     transition: opacity $transition-medium ease-in-out;
     z-index: -1;
   }
-  &__carrousel--active {  // <-- double tiret (BEM modifier)
+  &__carrousel--active {
     opacity: 1;
     z-index: 0;
   }
@@ -44,7 +49,7 @@ $color-overlay-hover: rgba(255, 255, 255, 0.6);
     gap: $spacing-base;
     z-index: 1;
 
-    &__input {  // <-- double soulignement pour correspondre à .hero__radio__input
+    &__input {
       appearance: none;
       width: 1rem;
       height: 1rem;
@@ -66,45 +71,83 @@ $color-overlay-hover: rgba(255, 255, 255, 0.6);
     padding: $spacing-lg;
     color: $color-white;
 
-    &__titre {
-      font-size: clamp(2.5rem, 5vw, 4rem);
+    & .hero__titre {
+      text-shadow: 3px 3px rgb(251, 255, 8);
+      font-size: clamp(2.5rem, 5vw, 6rem);
       margin-bottom: $spacing-base;
     }
-    &__description {
-      font-size: 1.2rem;
-      margin-bottom: $spacing-lg;
+
+    & .hero__description,
+    & .hero__courriel,
+    & .hero__addresse,
+    & .hero__numero,
+    & .hero__auteur {
+      font-size: 1.25rem;
+      color: $color-text;
+      margin-bottom: 0.5rem;
     }
+
     &__bouton {
+      margin: $spacing-base 0;
       padding: 0.75rem 1.5rem;
-      background: $color-overlay;
-      border: none;
+      background: $color-button-bg;
+      border: 2px solid $color-button-border;
       border-radius: 5px;
-      color: $color-white;
+      color: $color-button-text;
+      font-size: 1rem;
       cursor: pointer;
-      transition: background $transition-fast ease;
+      font-family: $font-fallback;
+      transition: background $transition-fast ease, transform $transition-fast ease;
 
       &:hover {
-        background: $color-overlay-hover;
+        transform: translateY(-2px);
+      }
+    }
+
+    & .hero__icone-app {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.5rem;
+
+      img {
+        display: inline-block;
+        width: 1.25rem;
+        height: 1.25rem;
       }
     }
   }
 }
 
+// ================================
 // Responsive tweaks
-@media (max-width: 768px) {
-  .hero {
-    &__radio {
-      bottom: $spacing-base;
-    }
-    &__contenu {
-      padding: $spacing-base;
+// ================================
+@media (max-width: 1024px) {
+  .hero__radio {
+    bottom: $spacing-base;
+    gap: 4rem;
+  }
+}
 
-      &__titre {
-        font-size: clamp(2rem, 6vw, 3rem);
-      }
-      &__description {
-        font-size: 1rem;
-      }
+@media (max-width: 768px) {
+  .hero__contenu {
+    padding: $spacing-base;
+
+    & .hero__titre {
+      font-size: clamp(2rem, 6vw, 4rem);
+    }
+    & .hero__description {
+      font-size: 1rem;
+      margin-bottom: $spacing-lg;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__contenu {
+    padding: 3rem 1.5rem;
+
+    & .hero__titre {
+      font-size: clamp(1.5rem, 8vw, 3rem);
     }
   }
 }

@@ -1,0 +1,38 @@
+.hero {
+  &__titre,
+  &__description {
+    position: relative;
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  &__titre.anim-active {
+    animation: anim_titre 1s ease-out forwards;
+  }
+
+  &__description.anim-active {
+    animation: anim_description 1s ease-out 0.5s forwards;
+  }
+}
+
+@keyframes anim_titre {
+  0% {
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes anim_description {
+  0% {
+    transform: translateX(-1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

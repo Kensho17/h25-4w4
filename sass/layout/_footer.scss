@@ -1,103 +1,72 @@
-/*
-  --------------------------------- Layout du pied de page
-*/
-
 footer {
-  background-color: rgb(0, 0, 0);
-  color: #77acf1;
-}
+  position: relative;
+  background-color: rgb(44, 62, 80);
+  color: #b9d1f0;
 
-.piedpage {
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(0, 0, 0);
+  // Vague SVG en fond
+  .vague {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 0;
+  }
 
-  &__s1 {
+  .piedpage {
+    position: relative;
+    z-index: 1;
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    gap: 3rem;
-    padding: 2rem 0;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
 
-    &__externe, &__adresse, &__description {
-      flex: 1 1 30%;
-      flex-direction: column;
-      text-align: center;
-      align-items: center;
+    &__s1 {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding-bottom: 2rem;
 
-      .menu { // ul
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+      &__externe,
+      &__adresse,
+      &__description {
+        flex: 1 1 30%;
+        text-align: center;
+
+        &__recherche {
+          margin-top: 1rem;
+        }
+
+        nav.menu {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
       }
     }
 
-    &__adresse {
-      flex: 1 1 40%;
+    &__s2 {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem 0;
     }
 
-    &__description {
-      flex: 1 1 400px;
-    }
-  }
-
-  &__s2 {
-    padding: 2vh 2vw;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  &__s3 {
-    display: flex;
-    justify-content: center;
-  }
-}
-
-/* Responsive design pour les écrans jusqu'à 1024px */
-@media (max-width: 1024px) {
-  .piedpage__s1 {
-    gap: 2rem;
-    flex-wrap: wrap;
-
-    &__externe, &__adresse, &__description {
-      flex: 1 1 45%;
+    &__s3 {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding-bottom: 1rem;
     }
   }
 }
 
-/* Responsive design pour les écrans jusqu'à 768px */
+// Responsive
 @media (max-width: 768px) {
-  .piedpage__s1 {
-    gap: 1rem;
-
-    &__externe, &__adresse, &__description {
-      flex: 1 1 100%;
-    }
-  }
-
-  .piedpage__s2 {
-    padding: 2vh 1vw;
-    height: auto;
-  }
-
-  .piedpage__s3 {
+  footer .piedpage__s1 {
     flex-direction: column;
-  }
-}
-
-/* Responsive design pour les écrans jusqu'à 480px */
-@media (max-width: 480px) {
-  .piedpage__s1 {
-    gap: 1rem;
-
-    &__externe, &__adresse, &__description {
-      flex: 1 1 100%;
-    }
-  }
-
-  .piedpage__s2 {
-    padding: 2vh 0.5vw;
+    gap: 2rem;
   }
 }

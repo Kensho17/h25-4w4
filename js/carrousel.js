@@ -15,7 +15,7 @@
      */
     function showSlide(idx) {
       // Coche la bonne radio
-      radios[idx].checked = true;
+      if (radios[idx]) radios[idx].checked = true;
   
       // Masque toutes les slides
       slides.forEach(slide => slide.classList.remove('hero__carrousel--active'));
@@ -28,7 +28,7 @@
     if (total > 0) {
       showSlide(0);
   
-      // Défilement automatique toutes les 5 secondes
+      // Défilement automatique toutes les 5 secondes
       setInterval(() => {
         currentIndex = (currentIndex + 1) % total;
         showSlide(currentIndex);
@@ -44,4 +44,4 @@
     } else {
       console.warn('Aucune slide trouvée pour le carrousel.');
     }
-  })();
+})();
