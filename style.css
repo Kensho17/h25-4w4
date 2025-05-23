@@ -349,10 +349,15 @@ Le composant .carte
   display: block;
   width: 100%;
   rotate: 180deg;
+  height: 200px;
+  margin-bottom: -1px;
 }
 
 .vague--double {
-  height: 100px;
+  display: block;
+  width: 100%;
+  height: 200px;
+  margin-bottom: -1px;
 }
 
 /* sass/composants/_template-pays.scss */

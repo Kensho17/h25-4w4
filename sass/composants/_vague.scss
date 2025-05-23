@@ -4,9 +4,14 @@
     display: block;
     width: 100%;
     rotate: 180deg;
+    height: 200px;     
+    margin-bottom: -50px; // retire la bordure/trait blanc entre SVG et section
   }
   
   .vague--double {
-    height: 100px;   // ajustez la hauteur selon votre maquette
+    display: block;
+    width: 100%;
+    height: 200px;     
+    margin-bottom: -50px; // retire la bordure/trait blanc entre SVG et section
   }
   
