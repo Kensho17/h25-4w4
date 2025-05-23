@@ -1,47 +1,49 @@
 (function(){
-    console.log('carrousel.js');
-  
-    // Sélection des radios et des slides
-    const radios = document.querySelectorAll('.hero__radio__input');
-    const slides = document.querySelectorAll('.hero__carrousel');
-    console.log('Nombre de radios :', radios.length, '– Nombre de slides :', slides.length);
-  
-    let currentIndex = 0;
-    const total = slides.length;
-  
-    /**
-     * Affiche la slide d'indice idx et coche la radio correspondante.
-     * @param {number} idx
-     */
-    function showSlide(idx) {
-      // Coche la bonne radio
-      if (radios[idx]) radios[idx].checked = true;
-  
-      // Masque toutes les slides
-      slides.forEach(slide => slide.classList.remove('hero__carrousel--active'));
-  
-      // Affiche la slide idx
-      slides[idx].classList.add('hero__carrousel--active');
-    }
-  
-    // Initialisation si on a au moins une slide
-    if (total > 0) {
-      showSlide(0);
-  
-      // Défilement automatique toutes les 5 secondes
-      setInterval(() => {
-        currentIndex = (currentIndex + 1) % total;
-        showSlide(currentIndex);
-      }, 5000);
-  
-      // Navigation manuelle via les radios
-      radios.forEach((radio, idx) => {
-        radio.addEventListener('change', () => {
-          currentIndex = idx;
-          showSlide(idx);
+    console.log("carrousel.js");
+
+    const heroRadios = document.querySelectorAll(".hero__radio__input");
+    const carrousels = document.querySelectorAll(".hero__carrousel");
+    let current = 0;
+    const total = carrousels.length;
+
+    const titre = document.querySelector(".hero__titre");
+    const description = document.querySelector(".hero__description");
+
+    function restartAnimations() {
+        [titre, description].forEach(el => {
+            el.classList.remove("anim-active");
+            void el.offsetWidth; // Force le reflow pour relancer l'animation
+            el.classList.add("anim-active");
         });
-      });
-    } else {
-      console.warn('Aucune slide trouvée pour le carrousel.');
     }
+
+    function switchCarousel(index) {
+        carrousels[current].classList.remove("active");
+        current = index;
+        carrousels[current].classList.add("active");
+        if (heroRadios[current]) {
+            heroRadios[current].checked = true;
+        }
+        restartAnimations();
+    }
+
+    let interval;
+    function startInterval() {
+        if (interval) clearInterval(interval);
+        interval = setInterval(() => {
+            switchCarousel((current + 1) % total);
+        }, 5000);
+    }
+
+    startInterval();
+
+    heroRadios.forEach((radio, index) => {
+        radio.addEventListener("click", () => {
+            switchCarousel(index);
+            startInterval();
+        });
+    });
+
+    // Lancer l’animation au chargement
+    restartAnimations();
 })();

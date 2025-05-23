@@ -1,98 +1,53 @@
-/* -----------------------------------------
-   Burger Menu (pour la version mobile)
------------------------------------------ */
-.burger {
-  display: none;
-
-  @media screen and (max-width: $point__rupture) {
-    display: block;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 99;
-  }
+.burger{
+    display: none;
+    @media screen and (max-width:$point__rupture) {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 99;
+    }
 }
-
-/* -----------------------------------------
-   Contrôle du Burger Menu (checkbox)
------------------------------------------ */
-.chk__burger {
-  display: none;
+.chk__burger{
+    display: none;
 }
-
 .chk__burger:checked ~ .entete__nav {
-  display: flex;
+    display: flex;
 }
 
-/* -----------------------------------------
-   Header Principal (.entete)
------------------------------------------ */
-.entete {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgb(0, 0, 0);
-  padding: 10px 20px; // Espacement interne pour plus de confort
 
-  /* Navigation principale */
-  &__nav {
+
+.entete{
     display: flex;
-    justify-content: flex-end;
-    position: static;
-
-    @media screen and (max-width: $point__rupture) {
-      display: none;
-      flex-direction: column;
-      height: 50vh;
-      width: 100vw;
-      gap: 30px 0;
-      padding-bottom: 20px;
-      position: absolute;
-      top: 0;
-      right: 0;
-      background-color: #bdbdbd;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); // Ombre pour le menu mobile
-    }
-
-    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    gap: 0 40px;
-    flex-wrap: wrap;
-  }
+    background-color: rgb(44, 62, 80);
+    
 
-  /* Liens de navigation */
-  &__nav a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 1rem;
-    transition: color 0.3s ease;
+    &__nav {
+        display: flex;
+        justify-content: flex-end;
+        position: static;
 
-    &:hover {
-      color: #ff8742; // Changement de couleur au survol
+        @media  screen and (max-width:$point__rupture) {
+            display: none;
+            flex-direction: column;
+            height: 50vh;
+            width: 100vw;
+            gap: 30px 0;
+            padding-bottom: 20px;
+            gap: 30px 0;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #fff;
+        }
+
+        flex-direction: row;
+        align-items: center;
+        gap: 0 40px;
+        flex-wrap: wrap ;
     }
-  }
 }
 
-/* -----------------------------------------
-   Styles généraux pour l'ensemble de la navigation
------------------------------------------ */
-@media screen and (max-width: $point__rupture) {
-  .entete__nav {
-    display: none; // Cache la navigation par défaut
-    flex-direction: column;
-    height: 50vh;
-    width: 100vw;
-    gap: 30px 0;
-    padding-bottom: 20px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); // Ombre pour un contraste plus fort
-  }
 
-  /* Affiche la navigation quand le burger est coché */
-  .chk__burger:checked ~ .entete__nav {
-    display: flex;
-  }
-}

@@ -1,62 +1,61 @@
 (function() {
-    // Sélection des éléments de filtre de catégorie
-    const categoryItems = document.querySelectorAll('.categorie__ul__li');
-    let categoryId = 3; // ID de catégorie par défaut
-    const domain = window.location.origin;
-    let apiUrl = `${domain}/wp-json/wp/v2/posts?categories=${categoryId}`;
-
-    console.log('Éléments de catégorie trouvés :', categoryItems.length);
-
-    // Initialisation du filtre
-    categoryItems.forEach(item => {
-        item.addEventListener('click', () => {
-            // Mise à jour de l'état "actif"
-            categoryItems.forEach(el => el.classList.remove('active'));
-            item.classList.add('active');
-
-            // Récupère l'ID et refait l'URL
-            categoryId = item.dataset.id;
-            apiUrl = `${domain}/wp-json/wp/v2/posts?categories=${categoryId}`;
-
-            // Charge les articles pour cette catégorie
-            fetchPosts(apiUrl);
+    console.log("vive Javascript");
+ 
+    let categoryId = 3; // Remplacez par l'ID de la catégorie souhaitée
+    const domaine = window.location.href;
+    let apiUrl = `${domaine}/wp-json/wp/v2/posts?categories=${categoryId}`;
+    const categorie__ul__li = document.querySelectorAll(".categorie__ul__li");
+    console.log("categorie__ul__li.length", categorie__ul__li.length);
+    categorie__ul__li.forEach(li => {
+        li.addEventListener("click", function() {
+            console.log(li.dataset.id);
+            categoryId = li.dataset.id;
+            apiUrl = `${domaine}/wp-json/wp/v2/posts?categories=${categoryId}`;
+             mon_fetch(apiUrl);
         });
     });
-
-    /**
-     * Récupère les posts via l'API WP et les injecte dans le DOM
-     * @param {string} url 
-     */
-    function fetchPosts(url) {
-        fetch(url)
+           
+ 
+    function mon_fetch(apiUrl) {
+        fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
-                const list = document.querySelector('.destination__list');
-                list.innerHTML = ''; // Vide la liste
-
-                data.forEach(post => {
-                    const postEl = document.createElement('div');
-                    postEl.innerHTML = `
-                        <h3 class="TitreArticleCategorie">${post.title.rendered}</h3>
-                        <div class="descriptionArticleCategorie">${post.excerpt.rendered}</div>
-                        <a class="descriptionArticleCategorie" href="${post.link}">Lire plus</a>
+                const destinationList = document.querySelector('.destination__list');
+                destinationList.innerHTML = ''; 
+                data.forEach(article => {
+                    const articleElement = document.createElement('div');
+                    articleElement.innerHTML = `
+                        <h3 class="TitreArticleCategorie">${article.title.rendered}</h3>
+                        <div class="descriptionArticleCategorie">${article.excerpt.rendered}</div>
+                        <a class="descriptionArticleCategorie" href="${article.link}">Lire plus</a>
                     `;
-                    list.appendChild(postEl);
+                    destinationList.appendChild(articleElement);
                 });
-
-                // Ajoute le toggle sur chaque titre pour afficher/masquer la description
-                document.querySelectorAll('.TitreArticleCategorie').forEach(title => {
-                    title.addEventListener('click', () => {
-                        const descriptions = title
-                            .parentElement
-                            .querySelectorAll('.descriptionArticleCategorie');
-                        descriptions.forEach(desc => desc.classList.toggle('active'));
+    
+                const titreElements = document.getElementsByClassName('TitreArticleCategorie');
+                Array.from(titreElements).forEach(titre => {
+                    titre.addEventListener('click', function () {
+                        let descriptionElements = [];
+                        let sibling = titre.nextElementSibling;
+    
+                        while (sibling) {
+                            if (sibling.classList.contains('descriptionArticleCategorie')) {
+                                descriptionElements.push(sibling);
+                            }
+                            sibling = sibling.nextElementSibling;
+                        }
+    
+                        descriptionElements.forEach(el => {
+                            el.classList.toggle('visible');
+                        });
                     });
                 });
             })
-            .catch(error => console.error('Erreur lors de la récupération des articles :', error));
+            .catch(error => console.error('Erreur lors de la récupération des articles:', error));
     }
-
-    // Chargement initial des articles
-    fetchPosts(apiUrl);
-})();
+    
+}
+ 
+ 
+)();
+ 

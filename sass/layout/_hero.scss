@@ -1,153 +1,60 @@
-// ================================
-// Variables globales
-// ================================
-$transition-fast: 0.3s;
-$transition-medium: 0.6s;
-$spacing-base: 6rem;
-$spacing-lg: 8rem;
-
-$color-white: #fff;
-$color-text: rgb(255, 214, 138);
-$color-overlay: rgba(255, 255, 255, 0.3);
-$color-overlay-hover: rgba(255, 255, 255, 0.6);
-$color-button-bg: rgb(243, 235, 129);
-$color-button-border: rgba(255, 115, 0, 0.61);
-$color-button-text: rgb(84, 101, 255);
-$font-fallback: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-
-// ================================
-// Hero & Carrousel
-// ================================
-.hero {
-  position: relative;
-  overflow: hidden;
-  min-height: 100vh;
-
-  // Slides (Carrousel)
-  &__carrousel {
-    position: absolute;
-    inset: 0;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity $transition-medium ease-in-out;
-    z-index: -1;
-  }
-  &__carrousel--active {
-    opacity: 1;
-    z-index: 0;
-  }
-
-  // Radios (Navigation)
-  &__radio {
-    position: absolute;
-    bottom: $spacing-lg;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: $spacing-base;
-    z-index: 1;
-
-    &__input {
-      appearance: none;
-      width: 1rem;
-      height: 1rem;
-      border: 2px solid $color-white;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: background-color $transition-fast ease;
-
-      &:checked {
-        background-color: $color-white;
-      }
-    }
-  }
-
-  // Contenu (Texte, bouton…)
-  &__contenu {
+.hero{
+    min-height: 100vh;
     position: relative;
-    z-index: 1;
-    padding: $spacing-lg;
-    color: $color-white;
+    overflow: hidden;
+    &__carrousel{
+        top: 0px;
+        left: 0;
+        position: absolute;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        width: 100%;
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+    .hero__carrousel.active{
+        opacity: 1;
+        z-index: -1;
+    }
+    &__radio{
+        position: absolute;
+        bottom: 80px;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        width: 100%;
+        &__input{
 
-    & .hero__titre {
-      text-shadow: 3px 3px rgb(251, 255, 8);
-      font-size: clamp(2.5rem, 5vw, 6rem);
-      margin-bottom: $spacing-base;
+        }
     }
 
-    & .hero__description,
-    & .hero__courriel,
-    & .hero__addresse,
-    & .hero__numero,
-    & .hero__auteur {
-      font-size: 1.25rem;
-      color: $color-text;
-      margin-bottom: 0.5rem;
-    }
 
-    &__bouton {
-      margin: $spacing-base 0;
-      padding: 0.75rem 1.5rem;
-      background: $color-button-bg;
-      border: 2px solid $color-button-border;
-      border-radius: 5px;
-      color: $color-button-text;
-      font-size: 1rem;
-      cursor: pointer;
-      font-family: $font-fallback;
-      transition: background $transition-fast ease, transform $transition-fast ease;
-
-      &:hover {
-        transform: translateY(-2px);
-      }
-    }
-
-    & .hero__icone-app {
-      margin-top: 1rem;
-      display: flex;
-      gap: 0.5rem;
-
-      img {
-        display: inline-block;
-        width: 1.25rem;
-        height: 1.25rem;
-      }
-    }
-  }
 }
 
-// ================================
-// Responsive tweaks
-// ================================
-@media (max-width: 1024px) {
-  .hero__radio {
-    bottom: $spacing-base;
-    gap: 4rem;
-  }
+.hero__titre{
+    text-shadow: 3px 3px rgb(251, 255, 8);
+    font-size: clamp(3rem, 4vw, 6rem);
+}
+.hero__description, .hero__courriel, .hero__addresse, .hero__numero, .hero__auteur{
+    font-size: 20px;
+    color: rgb(255, 214, 138);
 }
 
-@media (max-width: 768px) {
-  .hero__contenu {
-    padding: $spacing-base;
-
-    & .hero__titre {
-      font-size: clamp(2rem, 6vw, 4rem);
-    }
-    & .hero__description {
-      font-size: 1rem;
-      margin-bottom: $spacing-lg;
-    }
-  }
+.hero__bouton {
+    background-color: rgb(243, 235, 129); 
+    border: 2px solid rgba(255, 115, 0, 0.61);
+    padding: 10px 20px; 
+    color: rgb(84, 101, 255); 
+    font-size: 16px; 
+    border-radius: 5px; 
+    margin: 25px 0px 25px;
+    cursor: pointer; 
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+.hero__icone-app{
+    margin-top: 10px;
 }
 
-@media (max-width: 480px) {
-  .hero__contenu {
-    padding: 3rem 1.5rem;
 
-    & .hero__titre {
-      font-size: clamp(1.5rem, 8vw, 3rem);
-    }
-  }
-}
+
