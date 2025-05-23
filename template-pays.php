@@ -22,11 +22,11 @@ $couleur_bas  = get_theme_mod( 'pays_vague_bas_color',  '#B3ECB3' );
   </p>
 
   <div class="pays__gallery">
-    <img src="<?php echo esc_url( get_template_directory_uri() . '/images/pays1.jpg' ); ?>" alt="">
-    <img src="<?php echo esc_url( get_template_directory_uri() . '/images/pays2.jpg' ); ?>" alt="">
-    <img src="<?php echo esc_url( get_template_directory_uri() . '/images/pays3.jpg' ); ?>" alt="">
-    <img src="<?php echo esc_url( get_template_directory_uri() . '/images/pays4.jpg' ); ?>" alt="">
-    <img src="<?php echo esc_url( get_template_directory_uri() . '/images/pays5.jpg' ); ?>" alt="">
+    <img src="<?php echo esc_url( get_template_directory_uri() . "/images/Australie.jpg" ); ?>" alt="">
+    <img src="<?php echo esc_url( get_template_directory_uri() . '/images/canada.jpg' ); ?>" alt="">
+    <img src="<?php echo esc_url( get_template_directory_uri() . '/images/chine.jpg' ); ?>" alt="">
+    <img src="<?php echo esc_url( get_template_directory_uri() . '/images/espagne.jpg' ); ?>" alt="">
+    <img src="<?php echo esc_url( get_template_directory_uri() . '/images/japon.jpg' ); ?>" alt="">
   </div>
 </section>
 

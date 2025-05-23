@@ -36,6 +36,14 @@ function theme_tp_enqueue_assets() {
         filemtime( get_template_directory() . '/js/destination.js' ),
         true
     );
+    wp_localize_script(
+        'destination_restapi',
+        'tpApi',
+        array(
+            'root'  => esc_url_raw( rest_url() ),
+            'nonce' => wp_create_nonce( 'wp_rest' ),
+        )
+    );
 
     wp_enqueue_script(
         'carrousel.js',
