@@ -8,9 +8,11 @@ $footer_vague_color        = get_theme_mod( 'footer_vague_color', '#2C3E50' );
 ?>
 
 <?php
-// Affichage de la vague SVG paramétrable
-if ( function_exists( 'vague' ) ) {
-    vague( $footer_vague_color );
+$haut = get_theme_mod('pays_vague_haut_color', '#A0D8EF');
+$bas  = get_theme_mod('pays_vague_bas_color',  '#B3ECB3');
+if ( function_exists('creer_vague') ) {
+    // Vague au-dessus du footer
+    creer_vague( $haut, $bas );
 }
 ?>
 

@@ -1,61 +1,76 @@
 (function() {
-    console.log("vive Javascript");
- 
-    let categoryId = 3; // Remplacez par l'ID de la catégorie souhaitée
-    const domaine = window.location.href;
-    let apiUrl = `${domaine}/wp-json/wp/v2/posts?categories=${categoryId}`;
-    const categorie__ul__li = document.querySelectorAll(".categorie__ul__li");
-    console.log("categorie__ul__li.length", categorie__ul__li.length);
-    categorie__ul__li.forEach(li => {
-        li.addEventListener("click", function() {
-            console.log(li.dataset.id);
-            categoryId = li.dataset.id;
-            apiUrl = `${domaine}/wp-json/wp/v2/posts?categories=${categoryId}`;
-             mon_fetch(apiUrl);
+    console.log("destination.js adapté pour REST root");
+
+    // 1. Récupère la base REST API (ex. https://monsite.local/.../wp-json/)
+    const baseUrl = tpApi && tpApi.root
+        ? tpApi.root
+        : window.location.origin.replace(/\/$/, '') + '/wp-json/';
+
+    // 2. Sélecteurs
+    const listContainer   = document.querySelector('.destination__list');
+    const categoryButtons = document.querySelectorAll('.categorie__ul__li');
+
+    /**
+     * Récupère les posts via l’API et les affiche.
+     * @param {string} apiUrl URL complète de l’endpoint REST.
+     */
+    function mon_fetch(apiUrl) {
+        // Affiche un loader
+        listContainer.innerHTML = '<p class="loader">Chargement…</p>';
+
+        fetch(apiUrl, {
+            headers: {
+                'X-WP-Nonce': tpApi.nonce // utile si vous faites du POST/PATCH
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+            const contentType = response.headers.get('Content-Type') || '';
+            if (!contentType.includes('application/json')) {
+                throw new Error('Contenu non JSON : ' + contentType);
+            }
+            return response.json();
+        })
+        .then(data => {
+            listContainer.innerHTML = '';
+            if (!Array.isArray(data) || data.length === 0) {
+                listContainer.innerHTML = '<p>Aucune destination trouvée.</p>';
+                return;
+            }
+            data.forEach(post => {
+                const item = document.createElement('div');
+                item.className = 'destination__item';
+                item.innerHTML = `
+                  <h3 class="TitreArticleCategorie">${post.title.rendered}</h3>
+                  <div class="descriptionArticleCategorie">${post.excerpt.rendered}</div>
+                  <a href="${post.link}" class="destination__link">Voir plus</a>
+                `;
+                listContainer.appendChild(item);
+            });
+            // Activation de l'accordéon
+            document.querySelectorAll('.TitreArticleCategorie').forEach(titre => {
+                titre.addEventListener('click', () => {
+                    titre.nextElementSibling.classList.toggle('active');
+                });
+            });
+        })
+        .catch(err => {
+            console.error('Erreur lors de la récupération des articles :', err);
+            listContainer.innerHTML = `<p class="error">Erreur de chargement : ${err.message}</p>`;
+        });
+    }
+
+    // 3. Initialisation : catégorie par défaut (ID 3)
+    const defaultCategoryId = 3;
+    mon_fetch(`${baseUrl}wp/v2/posts?categories=${defaultCategoryId}`);
+
+    // 4. Écouteurs sur chaque bouton de catégorie
+    categoryButtons.forEach(li => {
+        li.addEventListener('click', () => {
+            const catId = li.dataset.id;
+            mon_fetch(`${baseUrl}wp/v2/posts?categories=${catId}`);
         });
     });
-           
- 
-    function mon_fetch(apiUrl) {
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => {
-                const destinationList = document.querySelector('.destination__list');
-                destinationList.innerHTML = ''; 
-                data.forEach(article => {
-                    const articleElement = document.createElement('div');
-                    articleElement.innerHTML = `
-                        <h3 class="TitreArticleCategorie">${article.title.rendered}</h3>
-                        <div class="descriptionArticleCategorie">${article.excerpt.rendered}</div>
-                        <a class="descriptionArticleCategorie" href="${article.link}">Lire plus</a>
-                    `;
-                    destinationList.appendChild(articleElement);
-                });
-    
-                const titreElements = document.getElementsByClassName('TitreArticleCategorie');
-                Array.from(titreElements).forEach(titre => {
-                    titre.addEventListener('click', function () {
-                        let descriptionElements = [];
-                        let sibling = titre.nextElementSibling;
-    
-                        while (sibling) {
-                            if (sibling.classList.contains('descriptionArticleCategorie')) {
-                                descriptionElements.push(sibling);
-                            }
-                            sibling = sibling.nextElementSibling;
-                        }
-    
-                        descriptionElements.forEach(el => {
-                            el.classList.toggle('active');
-                        });
-                    });
-                });
-            })
-            .catch(error => console.error('Erreur lors de la récupération des articles:', error));
-    }
-    
-}
- 
- 
-)();
- 
+})();

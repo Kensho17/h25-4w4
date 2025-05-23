@@ -1,3 +1,12 @@
-.vague{
-    position: relative;
-}
+/* sass/composants/_vague.scss */
+
+.vague {
+    display: block;
+    width: 100%;
+    rotate: 180deg;
+  }
+  
+  .vague--double {
+    height: 100px;   // ajustez la hauteur selon votre maquette
+  }
+  
