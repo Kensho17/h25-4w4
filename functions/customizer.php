@@ -80,6 +80,16 @@ for ($k=0; $k <3; $k++)
         'section' => 'footer_section',
         'type' => 'text',
       ));
+      // Couleur de la vague du footer
+$wp_customize->add_setting('footer_vague_color', array(
+  'default'           => '#2C3E50',
+  'sanitize_callback' => 'sanitize_hex_color',
+));
+$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'footer_vague_color', array(
+  'label'    => __('Couleur de la vague (footer)', 'theme_31w'),
+  'section'  => 'footer_section',
+  'settings' => 'footer_vague_color',
+)));
 
    // Image de destination dans le footer
   $wp_customize->add_setting('footer_destination_image', array(

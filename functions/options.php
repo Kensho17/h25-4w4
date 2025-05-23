@@ -45,6 +45,17 @@ function mon_theme_supports() {
   } 
   add_action('wp_enqueue_scripts', 'theme_tp_enqueue_styles');
   
+  /**
+ * Enregistre les emplacements de menu.
+ */
+function theme_t_p_register_menus() {
+    register_nav_menus( array(
+        'principal' => __( 'Menu Principal', '4w4-weiqiang' ),
+        '404_menu'  => __( 'Menu 404',       '4w4-weiqiang' ),
+        'externe'   => __( 'Menu Partenaires','4w4-weiqiang' ),
+    ) );
+}
+add_action( 'after_setup_theme', 'theme_t_p_register_menus' );
   
   /** 
   * Modifie la requete principale de WordPress avant qu'elle soit exécuté
@@ -61,6 +72,14 @@ function mon_theme_supports() {
     }
    }
    add_action('pre_get_posts', 'modifie_requete_principal');
+
+   function seul_posts_dans_recherche( $query ) {
+    if ( $query->is_search() && ! is_admin() && $query->is_main_query() ) {
+        // Ne retourner que les articles (post_type = 'post')
+        $query->set( 'post_type', array( 'post' ) );
+    }
+}
+add_action( 'pre_get_posts', 'seul_posts_dans_recherche' );
    
 
 

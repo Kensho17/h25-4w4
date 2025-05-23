@@ -46,7 +46,7 @@
                         }
     
                         descriptionElements.forEach(el => {
-                            el.classList.toggle('visible');
+                            el.classList.toggle('active');
                         });
                     });
                 });

@@ -34,7 +34,7 @@
             switchCarousel((current + 1) % total);
         }, 5000);
     }
-
+    switchCarousel(0);
     startInterval();
 
     heroRadios.forEach((radio, index) => {

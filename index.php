@@ -1,119 +1,54 @@
-<?php 
+<?php
 /**
- *  index.php est le modèle par défaut
- *  si aucun modèle peut satisfaire la requête http dans ce cas c'est index.php qui affichera le contenu de la page 
- * 
+ * index.php
+ * Modèle par défaut du thème — affiche la page d’accueil ou les archives.
  */
-$page = $_GET['page'] ?? '';
- 
-if (file_exists($page . ".php")) {
-    include $page . ".php";
-} else {
-    http_response_code(404);
-    include "404.php";
-    exit;
-}
 
+get_header();
 ?>
 
-<?php get_header() ?>
-    <section class="hero">
-        <div class="hero__contenu global">
-            <h1 class="hero__titre">
-                Club de voyage
-            </h1>
-            <p class="hero__description">
-                Découvrez des destinations uniques et inoubliables avec Mondo Voyages. Nous vous offrons des authentique, des paysages à couper le souffle et des aventures sur mesure. Partez à la découverte du monde avec nous et créez des souvenirs impérissables.
-            </p>
-            <p class="hero__courriel">
-                info@cmaisonneuve.qc.ca
-            </p>
-            <p class="hero__addresse">
-                3800, rue Sherbrooke, Montreal
-            </p>
-            <p class="hero__numero">
-                514-254-7131
-            </p>
-            <button class="hero__bouton">
-                s'inscrire
-            </button>
-            <div class="hero__icone-app">
-                <?php afficher_icones_sociaux(); ?>
-            </div>
+<div id="primary" class="content-area global">
+  <main id="main" class="site-main">
+
+    <?php if ( is_front_page() ) : ?>
+      <!-- SECTION HERO -->
+      <?php get_template_part( 'gabarit/hero' ); ?>
+
+      <!-- SECTION FORMULAIRE -->
+      <?php get_template_part( 'gabarit/formulaire' ); ?>
+    <?php endif; ?>
+
+    <?php if ( have_posts() ) : ?>
+      <!-- SECTION POPULAIRE -->
+      <section class="populaire">
+        <div class="boiteflex global">
+          <?php while ( have_posts() ) : the_post(); ?>
+
+            <?php if ( has_category( 'galerie' ) ) : ?>
+              <div class="article-contenu">
+                <?php the_content(); ?>
+              </div>
+            <?php else : ?>
+              <?php get_template_part( 'gabarit/carte' ); ?>
+            <?php endif; ?>
+
+          <?php endwhile; ?>
         </div>
-    </section>
-    
-    <section class="form__formulaire">
-        <div class="formulaire">
-            <form>
-                <div class="form__reponse">
-                    <label for="nom">Nom:</label><br>
-                    <input type="text" class="formulaire__input" name="nom" placeholder="Écrivez votre nom"><br>
-                </div>
-                <div class="form__reponse">
-                    <label for="prenom">Prénom:</label><br>
-                    <input type="text" class="formulaire__input" name="prenom"placeholder="Écrivez votre prénom"><br>
-                </div>
-                <div class="form__reponse">
-                    <label for="courriel">Courriel:</label><br>
-                    <input type="text" class="formulaire__input" name="courriel" placeholder="Écrivez votre courriel"><br>
-                </div>
-                <div class="form__reponse">
-                    <label for="telephone">Téléphone:</label><br>
-                    <input type="text" class="formulaire__input" name="telephone"placeholder="Écrivez votre téléphone" ><br>
-                </div>
-                    <button class="formulaire__button">S'inscrire</button>                
-            </form>
-        </div>
-    </section>
-    <section class="galerie">
-        <h2>Nos destinations favorites</h2>
-        <div class="galerie__destinations">
-            <figure class="galerie__fig">
-                <img src="<?php echo get_template_directory_uri() . '/images/Australie.jpg' ?>" class="galerie__img">
-            </figure>
-            <figure class="galerie__fig">
-                <img src="<?php echo get_template_directory_uri() . '/images/canada.jpg' ?>" class="galerie__img">
-            </figure>
-            <figure class="galerie__fig">
-                <img src="<?php echo get_template_directory_uri() . '/images/chine.jpg' ?>" class="galerie__img">
-            </figure>
-            <figure class="galerie__fig">
-                <img src="<?php echo get_template_directory_uri() . '/images/espagne.jpg' ?>" class="galerie__img">
-            </figure>
-            <figure class="galerie__fig">
-                <img src="<?php echo get_template_directory_uri() . '/images/japon.jpg' ?>"class="galerie__img">
-            </figure>
-            <figure class="galerie__fig">
-                <img src="<?php echo get_template_directory_uri() . '/images/scotland.jpg' ?>" class="galerie__img">
-            </figure>
-            <figure class="galerie__fig">
-                <img src="<?php echo get_template_directory_uri() . '/images/tanzania.jpg' ?>" class="galerie__img">
-            </figure>
-            <figure class="galerie__fig">
-                <img src="<?php echo get_template_directory_uri() . '/images/uk.jpg' ?>" class="galerie__img">
-            </figure>
-            <figure class="galerie__fig">
-                <img src="<?php echo get_template_directory_uri() . '/images/usa.jpg' ?>" class="galerie__img">
-            </figure>
-            <figure class="galerie__fig">
-                <img src="<?php echo get_template_directory_uri() . '/images/vietnam.jpg' ?>"class="galerie__img">
-            </figure>
-        </div>   
-    </section>
-    <section class="populaire">
-        <div class="global">
-            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                <article class="populaire__article">
-                    <?php
-                    if (has_post_thumbnail())
-                     the_post_thumbnail(); ?>
-                    <h2 class="populaire__titre"><?php the_title(); ?></h2>
-                    <div class="pouplaire__contenu"><?php the_content(); ?></div>
-                </article>
-            <?php endwhile; endif; ?>
-        </div>
-    </section>
-   <?php get_footer(); ?>
-</body>
-</html>
+      </section>
+    <?php endif; ?>
+
+    <?php if ( is_front_page() ) : ?>
+      <!-- SECTION DESTINATION (REST API) -->
+      <?php categories_liste( 'destination' ); ?>
+      <section class="destination">
+        <h2 class="destination__titre">Articles de la catégorie</h2>
+        <div class="destination__list"></div>
+      </section>
+    <?php endif; ?>
+
+  </main>
+</div>
+
+<?php
+get_footer();
+?>

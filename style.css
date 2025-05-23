@@ -50,12 +50,25 @@ Les composants
   list-style-type: none;
   gap: 10px 0;
 }
+
+.menu-principal {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  gap: 10px 0;
+}
+
 @media screen and (max-width: 800px) {
   .menu {
     flex-direction: column;
   }
 }
 .menu-item a {
+  text-decoration: none;
+  padding: 4px;
+}
+
+.menu-principal .menu-item a {
   text-decoration: none;
   padding: 4px;
 }
@@ -71,6 +84,7 @@ Le composant .carte
   height: 550px;
   box-sizing: border-box;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .carte--grande {
   padding: 40px;
@@ -102,6 +116,8 @@ Le composant .carte
 }
 .carte__bouton:hover {
   color: rgb(150, 182, 214);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 .carte .post-categories {
   list-style-type: none;
