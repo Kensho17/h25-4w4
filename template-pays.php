@@ -27,15 +27,12 @@ $pays = array(
   </p>
 
   <div class="pays__gallery">
-    <?php
-    // Exemple de galerie statique ou générée dynamiquement
-    // Remplacez par votre loop ou get_theme_mod si vous l'avez paramétrée
-    ?>
-    <img src="<?php echo esc_url( get_template_directory_uri() . '/images/pays1.jpg' ); ?>" alt="">
-    <img src="<?php echo esc_url( get_template_directory_uri() . '/images/pays2.jpg' ); ?>" alt="">
-    <img src="<?php echo esc_url( get_template_directory_uri() . '/images/pays3.jpg' ); ?>" alt="">
-    <img src="<?php echo esc_url( get_template_directory_uri() . '/images/pays4.jpg' ); ?>" alt="">
-  </div>
+  <img src="<?php echo esc_url( get_template_directory_uri() . '/images/pays1.jpg' ); ?>" alt="">
+  <img src="<?php echo esc_url( get_template_directory_uri() . '/images/pays2.jpg' ); ?>" alt="">
+  <img src="<?php echo esc_url( get_template_directory_uri() . '/images/pays3.jpg' ); ?>" alt="">
+  <img src="<?php echo esc_url( get_template_directory_uri() . '/images/pays4.jpg' ); ?>" alt="">
+  <img src="<?php echo esc_url( get_template_directory_uri() . '/images/pays5.jpg' ); ?>" alt="">
+</div>
 </section>
 
 <?php

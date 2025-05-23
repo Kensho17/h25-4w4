@@ -1,76 +1,106 @@
-(function() {
-    console.log("destination.js adapté pour REST root");
-
-    // 1. Récupère la base REST API (ex. https://monsite.local/.../wp-json/)
-    const baseUrl = tpApi && tpApi.root
-        ? tpApi.root
-        : window.location.origin.replace(/\/$/, '') + '/wp-json/';
-
-    // 2. Sélecteurs
-    const listContainer   = document.querySelector('.destination__list');
-    const categoryButtons = document.querySelectorAll('.categorie__ul__li');
-
-    /**
-     * Récupère les posts via l’API et les affiche.
-     * @param {string} apiUrl URL complète de l’endpoint REST.
-     */
-    function mon_fetch(apiUrl) {
-        // Affiche un loader
-        listContainer.innerHTML = '<p class="loader">Chargement…</p>';
-
-        fetch(apiUrl, {
-            headers: {
-                'X-WP-Nonce': tpApi.nonce // utile si vous faites du POST/PATCH
-            }
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
-            }
-            const contentType = response.headers.get('Content-Type') || '';
-            if (!contentType.includes('application/json')) {
-                throw new Error('Contenu non JSON : ' + contentType);
-            }
-            return response.json();
-        })
+(function () {
+    console.log("destination.js chargé");
+ 
+    const domaine = window.location.origin + '/h25-4w4';
+ 
+    const pays = [
+      "France", "États-Unis", "Canada", "Argentine", "Chili",
+      "Belgique", "Maroc", "Mexique", "Japon", "Italie",
+      "Islande", "Chine", "Grèce", "Suisse"
+    ];
+ 
+    const menuPays = document.getElementById("menu-pays");
+    const destinationList = document.querySelector(".destination__list");
+ 
+    // Génère dynamiquement les boutons pour chaque pays
+    pays.forEach((nomPays, index) => {
+      const btn = document.createElement("button");
+      btn.classList.add("categorie__ul__li");
+      if (index === 0) btn.classList.add("active");
+      btn.textContent = nomPays;
+      btn.dataset.country = nomPays;
+      menuPays.appendChild(btn);
+    });
+ 
+    // Active les événements de clic
+    function parcourir_bouton() {
+      const buttons = document.querySelectorAll(".categorie__ul__li");
+      buttons.forEach(btn => {
+        btn.addEventListener("click", e => {
+          buttons.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+ 
+          const paysChoisi = btn.dataset.country;
+          fetchArticles(paysChoisi);
+        });
+      });
+    }
+ 
+    // Fonction pour récupérer les articles (via "search" ou "categories")
+    function fetchArticles(filtre) {
+      const isCategory = Number.isInteger(parseInt(filtre));
+      const param = isCategory ? `categories=${filtre}` : `search=${encodeURIComponent(filtre)}`;
+      const url = `${domaine}/wp-json/wp/v2/posts?${param}`;
+ 
+      fetch(url)
+        .then(res => res.json())
         .then(data => {
-            listContainer.innerHTML = '';
-            if (!Array.isArray(data) || data.length === 0) {
-                listContainer.innerHTML = '<p>Aucune destination trouvée.</p>';
-                return;
-            }
-            data.forEach(post => {
-                const item = document.createElement('div');
-                item.className = 'destination__item';
-                item.innerHTML = `
-                  <h3 class="TitreArticleCategorie">${post.title.rendered}</h3>
-                  <div class="descriptionArticleCategorie">${post.excerpt.rendered}</div>
-                  <a href="${post.link}" class="destination__link">Voir plus</a>
-                `;
-                listContainer.appendChild(item);
+          destinationList.innerHTML = "";
+ 
+          if (data.length > 0) {
+            data.forEach(article => {
+              const articleEl = document.createElement("div");
+              articleEl.classList.add("destination__item");
+ 
+              const titreWrapper = document.createElement("div");
+              titreWrapper.classList.add("destination__title-wrapper");
+ 
+              const h3 = document.createElement("h3");
+              h3.textContent = article.title.rendered;
+              h3.classList.add("destination__titre");
+ 
+              const boutonToggle = document.createElement("button");
+              boutonToggle.textContent = "...";
+              boutonToggle.classList.add("destination__toggle-button");
+ 
+              const extrait = document.createElement("div");
+              extrait.classList.add("destination__texte");
+              extrait.innerHTML = article.excerpt.rendered;
+              extrait.style.display = "none";
+ 
+              const lien = document.createElement("a");
+              lien.href = article.link;
+              lien.textContent = "Lire plus";
+              lien.style.display = "none";
+ 
+              titreWrapper.appendChild(h3);
+              titreWrapper.appendChild(boutonToggle);
+              articleEl.appendChild(titreWrapper);
+              articleEl.appendChild(extrait);
+              articleEl.appendChild(lien);
+ 
+              boutonToggle.addEventListener("click", () => {
+                const visible = extrait.style.display === "block";
+                extrait.style.display = visible ? "none" : "block";
+                lien.style.display = visible ? "none" : "inline";
+                boutonToggle.textContent = visible ? "..." : "Masquer";
+              });
+ 
+              destinationList.appendChild(articleEl);
             });
-            // Activation de l'accordéon
-            document.querySelectorAll('.TitreArticleCategorie').forEach(titre => {
-                titre.addEventListener('click', () => {
-                    titre.nextElementSibling.classList.toggle('active');
-                });
-            });
+          } else {
+            destinationList.innerHTML = "<p>Aucune destination trouvée.</p>";
+          }
         })
         .catch(err => {
-            console.error('Erreur lors de la récupération des articles :', err);
-            listContainer.innerHTML = `<p class="error">Erreur de chargement : ${err.message}</p>`;
+          console.error("Erreur API:", err);
+          destinationList.innerHTML = "<p>Erreur lors du chargement des destinations.</p>";
         });
     }
-
-    // 3. Initialisation : catégorie par défaut (ID 3)
-    const defaultCategoryId = 3;
-    mon_fetch(`${baseUrl}wp/v2/posts?categories=${defaultCategoryId}`);
-
-    // 4. Écouteurs sur chaque bouton de catégorie
-    categoryButtons.forEach(li => {
-        li.addEventListener('click', () => {
-            const catId = li.dataset.id;
-            mon_fetch(`${baseUrl}wp/v2/posts?categories=${catId}`);
-        });
-    });
-})();
+ 
+    // Charger France par défaut
+    fetchArticles("France");
+ 
+    // Activer les boutons
+    parcourir_bouton();
+  })();
